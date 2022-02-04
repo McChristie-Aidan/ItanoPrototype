@@ -41,7 +41,7 @@ public class PlayerFlightControls : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
+
     }
 
     void HandleMovement()
@@ -74,12 +74,32 @@ public class PlayerFlightControls : MonoBehaviour
     public void OnLook(InputAction.CallbackContext callbackContext)
     {
         //Debug.Log("looking");
-        lookRotation.x = -(callbackContext.ReadValue<Vector2>().y);
-        lookRotation.y = callbackContext.ReadValue<Vector2>().x;
+        /*
+         * scale look rotation by distance from center
+         */
+        float xDist = Mouse.current.position.ReadValue().x - Screen.width/2;
+        float yDist = Mouse.current.position.ReadValue().y - Screen.height/2;
+
+        Vector2.Distance(Mouse.current.position.ReadValue(), new Vector2(Screen.width/2 , Screen.height/2));
+        lookRotation.x = -(callbackContext.ReadValue<Vector2>().y) * xDist;
+        lookRotation.y = callbackContext.ReadValue<Vector2>().x * yDist;
     }
 
     public void OnStrafe(InputAction.CallbackContext callbackContext)
     {
         strafeInput = callbackContext.ReadValue<float>();
+    }
+
+    public void OnYaw(InputAction.CallbackContext callbackContext)
+    {
+
+    }
+    public void OnPitch(InputAction.CallbackContext callbackContext)
+    {
+
+    }
+    public void OnRoll(InputAction.CallbackContext callbackContext)
+    {
+
     }
 }
