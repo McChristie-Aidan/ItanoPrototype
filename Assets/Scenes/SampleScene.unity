@@ -1370,7 +1370,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 499714654}
   m_Follow: {fileID: 499714654}
   m_Lens:
-    FieldOfView: 64.25442
+    FieldOfView: 99.56908
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -2170,7 +2170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 0
+  m_AmplitudeGain: 0.9913815
   m_FrequencyGain: 5
   mNoiseOffsets: {x: 260.48752, y: -590.9297, z: -816.1466}
 --- !u!43 &785251263
@@ -2485,7 +2485,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 64.25442
+  field of view: 99.56908
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -3799,7 +3799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minForwardSpeed: 10
   maxForwardSpeed: 50
-  strafeSpeed: 14
+  strafeSpeed: 20
   forwardAcceleration: 14.72
   pitchSpeed: 35
   yawSpeed: 15
@@ -3828,7 +3828,19 @@ MonoBehaviour:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1412995551}
+        m_TargetAssemblyTypeName: PlayerFlightControls, Assembly-CSharp
+        m_MethodName: OnDeviceChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -3923,7 +3935,7 @@ MonoBehaviour:
     m_ActionId: cf40af05-bed1-4dd9-917a-dfcb9866f3cf
     m_ActionName: Player/Strafe[/Keyboard/q,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 963194227}
