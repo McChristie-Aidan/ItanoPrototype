@@ -5,28 +5,29 @@ using UnityEngine.InputSystem;
 
 public class PlayerFlightControls : MonoBehaviour
 {
-    public float forwardSpeed = 25f, strafeSpeed = 7.5f, hoverSpeed = 5f;
-    private float activeForwardSpeed, activeStrafeSpeed, activeHoverSpeed;
-    private float forwardAcceleration = 2.5f, strafeAcceleration = 2f, hoverAcceleration = 2f;
+    public float minForwardSpeed = 10f, maxForwardSpeed = 25f, strafeSpeed = 7.5f;
+    private float activeForwardSpeed, activeStrafeSpeed;
+    private float forwardAcceleration = 5f;
 
 
-    public float verticleLookSpeed = 7f, horizontalLookSpeed = 10f, rollSpeed = 10f;
+    public float pitchSpeed = 7f, yawSpeed = 10f, rollSpeed = 10f;
     private float activeRollSpeed;
 
     private Vector3 lookRotation;
 
     private Vector2 movementInput;
-
     private float strafeInput;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        activeForwardSpeed = minForwardSpeed;
     }
-
     // Update is called once per frame
     void Update()
     {
+
+
+        GetLookRotation();
         HandleRotation();
         HandleMovement();
         /*
@@ -36,17 +37,27 @@ public class PlayerFlightControls : MonoBehaviour
         /*
          * use this for auto move forward
          */
-        transform.position += this.transform.forward * forwardSpeed * Time.deltaTime;
-        transform.position += (transform.right * activeStrafeSpeed * Time.deltaTime) + (transform.up * activeHoverSpeed * Time.deltaTime);
+        transform.position += this.transform.forward * activeForwardSpeed * Time.deltaTime;
+        transform.position += transform.right * activeStrafeSpeed * Time.deltaTime;
     }
-    private void FixedUpdate()
+    private void LateUpdate()
     {
-
+        //transform.Translate(this.transform.forward * activeForwardSpeed * Time.deltaTime);
+        //transform.Translate(this.transform.right * activeStrafeSpeed * Time.deltaTime);
     }
 
+    void GetLookRotation()
+    {
+        float xDist = Mouse.current.position.ReadValue().x - Screen.width / 2;
+        float yDist = Mouse.current.position.ReadValue().y - Screen.height / 2;
+
+        lookRotation.x = -(yDist * 2) * Time.deltaTime;
+        lookRotation.y = xDist * Time.deltaTime;
+    }
     void HandleMovement()
     {
-        activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, movementInput.y * forwardSpeed, forwardAcceleration * Time.deltaTime);
+        activeForwardSpeed += (forwardAcceleration * movementInput.y) * Time.deltaTime;
+        
         /*
          * for strafing movement
          */
@@ -56,8 +67,8 @@ public class PlayerFlightControls : MonoBehaviour
     {
         activeRollSpeed = Mathf.Lerp(activeRollSpeed, movementInput.x * rollSpeed, rollSpeed * Time.deltaTime);
         lookRotation = new Vector3(
-            lookRotation.x * verticleLookSpeed,
-            lookRotation.y * horizontalLookSpeed,
+            lookRotation.x * pitchSpeed,
+            lookRotation.y * yawSpeed,
             lookRotation.z * rollSpeed) * Time.deltaTime;
         lookRotation.z = -activeRollSpeed;
 
@@ -77,29 +88,17 @@ public class PlayerFlightControls : MonoBehaviour
         /*
          * scale look rotation by distance from center
          */
-        float xDist = Mouse.current.position.ReadValue().x - Screen.width/2;
-        float yDist = Mouse.current.position.ReadValue().y - Screen.height/2;
+        //float xDist = Mouse.current.position.ReadValue().x - Screen.width/2;
+        //float yDist = Mouse.current.position.ReadValue().y - Screen.height/2;
 
-        Vector2.Distance(Mouse.current.position.ReadValue(), new Vector2(Screen.width/2 , Screen.height/2));
-        lookRotation.x = -(callbackContext.ReadValue<Vector2>().y) * xDist;
-        lookRotation.y = callbackContext.ReadValue<Vector2>().x * yDist;
+        //lookRotation.x = xDist * Time.deltaTime;
+        //lookRotation.y = yDist * Time.deltaTime;
+        //lookRotation.x = -(callbackContext.ReadValue<Vector2>().y);
+        //lookRotation.y = callbackContext.ReadValue<Vector2>().x;
     }
 
     public void OnStrafe(InputAction.CallbackContext callbackContext)
     {
         strafeInput = callbackContext.ReadValue<float>();
-    }
-
-    public void OnYaw(InputAction.CallbackContext callbackContext)
-    {
-
-    }
-    public void OnPitch(InputAction.CallbackContext callbackContext)
-    {
-
-    }
-    public void OnRoll(InputAction.CallbackContext callbackContext)
-    {
-
     }
 }
