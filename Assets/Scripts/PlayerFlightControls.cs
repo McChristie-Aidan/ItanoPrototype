@@ -15,10 +15,27 @@ public class PlayerFlightControls : MonoBehaviour
     public float rollAcceleration = 20f;
 
     private Vector3 lookRotation;
+    private Vector2 lookInput;
 
     private Vector2 movementInput;
     private float strafeInput;
 
+    bool isGamepad;
+
+    PlayerControls playerControls;
+
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+    }
+    private void OnEnable()
+    {
+        playerControls.Enable();
+    }
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
     private void Start()
     {
         activeForwardSpeed = minForwardSpeed;
@@ -48,11 +65,19 @@ public class PlayerFlightControls : MonoBehaviour
 
     void GetLookRotation()
     {
-        float xDist = Mouse.current.position.ReadValue().x - Screen.width / 2;
-        float yDist = Mouse.current.position.ReadValue().y - Screen.height / 2;
+        if (!isGamepad)
+        {
+            float xDist = Mouse.current.position.ReadValue().x - Screen.width / 2;
+            float yDist = Mouse.current.position.ReadValue().y - Screen.height / 2;
 
-        lookRotation.x = -(yDist * 2) * Time.deltaTime;
-        lookRotation.y = (xDist * 2) * Time.deltaTime;
+            lookRotation.x = -(yDist * 2) * Time.deltaTime;
+            lookRotation.y = (xDist * 2) * Time.deltaTime;
+        }
+        else
+        {
+            lookRotation.x = -(lookInput.y * 4);
+            lookRotation.y = lookInput.x * 4;
+        }
     }
     void HandleMovement()
     {
@@ -76,6 +101,7 @@ public class PlayerFlightControls : MonoBehaviour
 
     }
     void HandleCameraEffects()
+
     {
         if (activeForwardSpeed > maxForwardSpeed * .8 )
         {
@@ -94,6 +120,12 @@ public class PlayerFlightControls : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext callbackContext)
     {
+        if (isGamepad)
+        {
+            lookInput = callbackContext.ReadValue<Vector2>();
+            //lookRotation.x = -(callbackContext.ReadValue<Vector2>().y);
+            //lookRotation.y = callbackContext.ReadValue<Vector2>().x;
+        }
         //Debug.Log("looking");
         /*
          * scale look rotation by distance from center
@@ -103,12 +135,14 @@ public class PlayerFlightControls : MonoBehaviour
 
         //lookRotation.x = xDist * Time.deltaTime;
         //lookRotation.y = yDist * Time.deltaTime;
-        //lookRotation.x = -(callbackContext.ReadValue<Vector2>().y);
-        //lookRotation.y = callbackContext.ReadValue<Vector2>().x;
     }
 
     public void OnStrafe(InputAction.CallbackContext callbackContext)
     {
         strafeInput = callbackContext.ReadValue<float>();
+    }
+    public void OnDeviceChange(PlayerInput pi)
+    {
+        isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
     }
 }
