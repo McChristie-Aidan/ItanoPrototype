@@ -7,11 +7,12 @@ public class PlayerFlightControls : MonoBehaviour
 {
     public float minForwardSpeed = 10f, maxForwardSpeed = 25f, strafeSpeed = 7.5f;
     private float activeForwardSpeed, activeStrafeSpeed;
-    private float forwardAcceleration = 5f;
+    public float forwardAcceleration = 7f;
 
 
     public float pitchSpeed = 7f, yawSpeed = 10f, rollSpeed = 10f;
     private float activeRollSpeed;
+    public float rollAcceleration = 20f;
 
     private Vector3 lookRotation;
 
@@ -25,11 +26,10 @@ public class PlayerFlightControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         GetLookRotation();
         HandleRotation();
         HandleMovement();
+        HandleCameraEffects();
         /*
          * use this for total control over speed
          */
@@ -52,12 +52,12 @@ public class PlayerFlightControls : MonoBehaviour
         float yDist = Mouse.current.position.ReadValue().y - Screen.height / 2;
 
         lookRotation.x = -(yDist * 2) * Time.deltaTime;
-        lookRotation.y = xDist * Time.deltaTime;
+        lookRotation.y = (xDist * 2) * Time.deltaTime;
     }
     void HandleMovement()
     {
         activeForwardSpeed += (forwardAcceleration * movementInput.y) * Time.deltaTime;
-        
+        activeForwardSpeed = Mathf.Clamp(activeForwardSpeed, minForwardSpeed, maxForwardSpeed);
         /*
          * for strafing movement
          */
@@ -65,7 +65,7 @@ public class PlayerFlightControls : MonoBehaviour
     }
     void HandleRotation()
     {
-        activeRollSpeed = Mathf.Lerp(activeRollSpeed, movementInput.x * rollSpeed, rollSpeed * Time.deltaTime);
+        activeRollSpeed = Mathf.Lerp(activeRollSpeed, movementInput.x * rollSpeed, rollAcceleration * Time.deltaTime);
         lookRotation = new Vector3(
             lookRotation.x * pitchSpeed,
             lookRotation.y * yawSpeed,
@@ -74,6 +74,16 @@ public class PlayerFlightControls : MonoBehaviour
 
         this.transform.Rotate(lookRotation, Space.Self);
 
+    }
+    void HandleCameraEffects()
+    {
+        if (activeForwardSpeed > maxForwardSpeed * .8 )
+        {
+            CameraEffects.Instance.ShakeCam(activeForwardSpeed * .02f);
+        }
+        float targetFOV = activeForwardSpeed + 50;
+        //float targetFOV = Mathf.Lerp(minForwardSpeed, maxForwardSpeed, Mathf.InverseLerp(60, 90, activeForwardSpeed));
+        CameraEffects.Instance.SetCamFOV(targetFOV);
     }
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
