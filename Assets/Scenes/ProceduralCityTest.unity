@@ -2726,9 +2726,9 @@ MonoBehaviour:
   maxForwardSpeed: 50
   strafeSpeed: 20
   forwardAcceleration: 14.72
-  pitchSpeed: 35
-  yawSpeed: 15
-  rollSpeed: 1.5
+  pitchSpeed: 15
+  yawSpeed: 5
+  rollSpeed: 3
   rollAcceleration: 4.84
 --- !u!65 &1380549611
 BoxCollider:
@@ -4704,7 +4704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124202555}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000005339583, y: 0.82542866, z: -2.1340003}
+  m_LocalPosition: {x: -0.0000005339583, y: 0.82542855, z: -2.1340003}
   m_LocalScale: {x: 0.6666667, y: 0.71428573, z: 0.6666667}
   m_Children:
   - {fileID: 2052404779}
@@ -4752,7 +4752,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0914826, y: 1}
+    m_SensorSize: {x: 1.2653003, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
