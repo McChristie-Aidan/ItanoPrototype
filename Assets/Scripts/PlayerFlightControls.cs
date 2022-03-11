@@ -24,6 +24,8 @@ public class PlayerFlightControls : MonoBehaviour
 
     PlayerControls playerControls;
 
+    Rigidbody rb;
+
     private void Awake()
     {
         playerControls = new PlayerControls();
@@ -39,6 +41,7 @@ public class PlayerFlightControls : MonoBehaviour
     private void Start()
     {
         activeForwardSpeed = minForwardSpeed;
+        rb = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
     void Update()
@@ -56,6 +59,8 @@ public class PlayerFlightControls : MonoBehaviour
          */
         transform.position += this.transform.forward * activeForwardSpeed * Time.deltaTime;
         transform.position += transform.right * activeStrafeSpeed * Time.deltaTime;
+        //rb.velocity = this.transform.forward * activeForwardSpeed + this.transform.right * activeStrafeSpeed;
+
     }
     private void LateUpdate()
     {
@@ -67,11 +72,38 @@ public class PlayerFlightControls : MonoBehaviour
     {
         if (!isGamepad)
         {
-            float xDist = Mouse.current.position.ReadValue().x - Screen.width / 2;
-            float yDist = Mouse.current.position.ReadValue().y - Screen.height / 2;
+            //float xDist = Mouse.current.position.ReadValue().x - Screen.width / 2;
+            //float yDist = Mouse.current.position.ReadValue().y - Screen.height / 2;
+
+            float xDist = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue()).x;
+            float yDist = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue()).y;
+
+            xDist = Map(xDist, 0, -Screen.width, 1, Screen.width);
+            yDist = Map(yDist, 0, -Screen.height, 1, Screen.height);
+
+            if (xDist < -Screen.width/2)
+            {
+                xDist = -Screen.width / 2;
+            }
+            if (xDist > Screen.width / 2)
+            {
+                xDist = Screen.width / 2;
+            }
+
+            if (yDist < -Screen.height / 2)
+            {
+                yDist = -Screen.height / 2;
+            }
+            if (yDist > Screen.height / 2)
+            {
+                yDist = Screen.height / 2;
+            }
+
+            //Debug.Log(new Vector2(xDist, yDist).ToString());
 
             lookRotation.x = -(yDist * 2) * Time.deltaTime;
             lookRotation.y = (xDist * 2) * Time.deltaTime;
+            //Debug.Log(lookRotation);
         }
         else
         {
@@ -144,5 +176,11 @@ public class PlayerFlightControls : MonoBehaviour
     public void OnDeviceChange(PlayerInput pi)
     {
         isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
+    }
+
+    float Map(float value, float from1, float to1, float from2, float to2)
+    {
+        float scale = (to2 - to1) / (from2 - from1);
+        return (to1 + ((value - from1) * scale));
     }
 }
