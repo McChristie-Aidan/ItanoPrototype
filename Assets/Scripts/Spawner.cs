@@ -23,6 +23,8 @@ public class Spawner : MonoBehaviour
         {
             target = GameObject.FindGameObjectWithTag("Player");
         }
+
+        MissileManager.CreateInstance();
     }
 
     // Update is called once per frame

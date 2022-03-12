@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1219049926117507511}
   - component: {fileID: 1219049926117507510}
   - component: {fileID: 8771339343290204177}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 51
-  turningSpeed: 3
+  speedDampening: 0.1
+  turningSpeed: 1
+  separationDistance: 4
+  maxForce: 0
   target: {fileID: 0}
 --- !u!54 &8771339343290204177
 Rigidbody:
@@ -138,6 +141,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1219049926117507498}
     m_Modifications:
+    - target: {fileID: 983336633171167454, guid: 0c834db2ecc9a324ea70fbd6cbfeb782, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857805989565464273, guid: 0c834db2ecc9a324ea70fbd6cbfeb782, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2683839958581348751, guid: 0c834db2ecc9a324ea70fbd6cbfeb782, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -182,9 +193,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3771021895084825936, guid: 0c834db2ecc9a324ea70fbd6cbfeb782, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4267553529175486605, guid: 0c834db2ecc9a324ea70fbd6cbfeb782, type: 3}
       propertyPath: m_Name
       value: vfx_Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267553529175486605, guid: 0c834db2ecc9a324ea70fbd6cbfeb782, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c834db2ecc9a324ea70fbd6cbfeb782, type: 3}
@@ -200,6 +219,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1219049926117507498}
     m_Modifications:
+    - target: {fileID: 400130136312230382, guid: b30f90945c9d96849b624ff2158bf482, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 400130136783488596, guid: b30f90945c9d96849b624ff2158bf482, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -247,6 +270,10 @@ PrefabInstance:
     - target: {fileID: 400130136783488597, guid: b30f90945c9d96849b624ff2158bf482, type: 3}
       propertyPath: m_Name
       value: VFX_ShipWingTrails
+      objectReference: {fileID: 0}
+    - target: {fileID: 400130136783488597, guid: b30f90945c9d96849b624ff2158bf482, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b30f90945c9d96849b624ff2158bf482, type: 3}

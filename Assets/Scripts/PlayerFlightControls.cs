@@ -6,7 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerFlightControls : MonoBehaviour
 {
     public float minForwardSpeed = 10f, maxForwardSpeed = 25f, strafeSpeed = 7.5f;
+    public float MinForwardSpeed => minForwardSpeed;
+    public float MaxForwardSpeed => maxForwardSpeed;
+
     private float activeForwardSpeed, activeStrafeSpeed;
+    public float ActiveForwardSpeed => activeForwardSpeed;
     public float forwardAcceleration = 7f;
 
 
@@ -78,8 +82,8 @@ public class PlayerFlightControls : MonoBehaviour
             float xDist = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue()).x;
             float yDist = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue()).y;
 
-            xDist = Map(xDist, 0, -Screen.width, 1, Screen.width);
-            yDist = Map(yDist, 0, -Screen.height, 1, Screen.height);
+            xDist = Utility.Map(xDist, 0, -Screen.width, 1, Screen.width);
+            yDist = Utility.Map(yDist, 0, -Screen.height, 1, Screen.height);
 
             if (xDist < -Screen.width/2)
             {
@@ -178,9 +182,5 @@ public class PlayerFlightControls : MonoBehaviour
         isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
     }
 
-    float Map(float value, float from1, float to1, float from2, float to2)
-    {
-        float scale = (to2 - to1) / (from2 - from1);
-        return (to1 + ((value - from1) * scale));
-    }
+    
 }
