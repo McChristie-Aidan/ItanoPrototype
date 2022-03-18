@@ -107,7 +107,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 3
 --- !u!65 &8000195968944181624
 BoxCollider:
@@ -142,6 +142,11 @@ MonoBehaviour:
   yawSpeed: 15
   rollSpeed: 1.5
   rollAcceleration: 4.84
+  verticalLookDeadZone: 100
+  horizontalLookDeadZone: 100
+  explosionPrefab: {fileID: 5286639445833195791, guid: 34e95327320af7043a71cab4be3f39db, type: 3}
+  deathCameraShakeAmount: 10
+  deathCameraShakeLength: 10
 --- !u!114 &8000195968944181571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +276,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: cf40af05-bed1-4dd9-917a-dfcb9866f3cf
     m_ActionName: Player/Strafe[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7189730763712831090}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7cf16d94-bd0a-4273-81f5-e08777b57413
+    m_ActionName: Player/Reset[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -338,7 +359,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7780269, y: 1}
+    m_SensorSize: {x: 1.7776026, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

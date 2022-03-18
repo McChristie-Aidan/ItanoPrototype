@@ -51,4 +51,12 @@ public class MissileManager : MonoBehaviour
             MissileManager._instance = GO.GetComponent<MissileManager>();
         }
     }
+
+    public void DestroyAllMissiles()
+    {
+        foreach (Missile m in activeMissiles)
+        {
+            m.Die();
+        }
+    }
 }

@@ -18,6 +18,9 @@ public class PlayerFlightControls : MonoBehaviour
     private float activeRollSpeed;
     public float rollAcceleration = 20f;
 
+    public float verticalLookDeadZone = 10f;
+    public float horizontalLookDeadZone = 10f;
+
     private Vector3 lookRotation;
     private Vector2 lookInput;
 
@@ -25,6 +28,14 @@ public class PlayerFlightControls : MonoBehaviour
     private float strafeInput;
 
     bool isGamepad;
+
+    //death
+    [HideInInspector]
+    public bool isAlive = true;
+    [SerializeField]
+    GameObject explosionPrefab;
+    [SerializeField]
+    float deathCameraShakeAmount = 5f, deathCameraShakeLength = 1f;
 
     PlayerControls playerControls;
 
@@ -50,20 +61,23 @@ public class PlayerFlightControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetLookRotation();
-        HandleRotation();
-        HandleMovement();
-        HandleCameraEffects();
-        /*
-         * use this for total control over speed
-         */
-        //transform.position += this.transform.forward * activeForwardSpeed * Time.deltaTime;
-        /*
-         * use this for auto move forward
-         */
-        transform.position += this.transform.forward * activeForwardSpeed * Time.deltaTime;
-        transform.position += transform.right * activeStrafeSpeed * Time.deltaTime;
-        //rb.velocity = this.transform.forward * activeForwardSpeed + this.transform.right * activeStrafeSpeed;
+        if (isAlive)
+        {
+            GetLookRotation();
+            HandleRotation();
+            HandleMovement();
+            HandleCameraEffects();
+            /*
+             * use this for total control over speed
+             */
+            //transform.position += this.transform.forward * activeForwardSpeed * Time.deltaTime;
+            /*
+             * use this for auto move forward
+             */
+            transform.position += this.transform.forward * activeForwardSpeed * Time.deltaTime;
+            transform.position += transform.right * activeStrafeSpeed * Time.deltaTime;
+            //rb.velocity = this.transform.forward * activeForwardSpeed + this.transform.right * activeStrafeSpeed;
+        }
 
     }
     private void LateUpdate()
@@ -85,22 +99,28 @@ public class PlayerFlightControls : MonoBehaviour
             xDist = Utility.Map(xDist, 0, -Screen.width, 1, Screen.width);
             yDist = Utility.Map(yDist, 0, -Screen.height, 1, Screen.height);
 
-            if (xDist < -Screen.width/2)
+            if (xDist > horizontalLookDeadZone || xDist < -horizontalLookDeadZone)
             {
-                xDist = -Screen.width / 2;
-            }
-            if (xDist > Screen.width / 2)
-            {
-                xDist = Screen.width / 2;
+                if (xDist < -Screen.width/2)
+                {
+                    xDist = -Screen.width / 2;
+                }
+                if (xDist > Screen.width / 2)
+                {
+                    xDist = Screen.width / 2;
+                }
             }
 
-            if (yDist < -Screen.height / 2)
+            if (yDist > verticalLookDeadZone || yDist < -verticalLookDeadZone)
             {
-                yDist = -Screen.height / 2;
-            }
-            if (yDist > Screen.height / 2)
-            {
-                yDist = Screen.height / 2;
+                if (yDist < -Screen.height / 2)
+                {
+                    yDist = -Screen.height / 2;
+                }
+                if (yDist > Screen.height / 2)
+                {
+                    yDist = Screen.height / 2;
+                }
             }
 
             //Debug.Log(new Vector2(xDist, yDist).ToString());
@@ -177,10 +197,26 @@ public class PlayerFlightControls : MonoBehaviour
     {
         strafeInput = callbackContext.ReadValue<float>();
     }
+    public void OnReset()
+    {
+        if (SceneManagement.Instance != null)
+        {
+            SceneManagement.Instance.LoadCurrentLevel();
+        }
+    }
     public void OnDeviceChange(PlayerInput pi)
     {
         isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
     }
-
-    
+    public void OnCollisionEnter(Collision collision)
+    {
+        isAlive = false;
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
+        }
+        MissileManager.Instance.DestroyAllMissiles();
+        CameraEffects.Instance.ShakeCam(deathCameraShakeAmount, deathCameraShakeLength);
+        GetComponent<Renderer>().enabled = false;
+    }
 }

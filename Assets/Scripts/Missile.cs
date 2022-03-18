@@ -68,7 +68,7 @@ public class Missile : MonoBehaviour
             }
             return;
         }
-        Debug.Log("H");
+        //Debug.Log("H");
         direction = target.transform.position - this.transform.position;
 
         this.transform.rotation = Quaternion.Slerp(
@@ -87,11 +87,6 @@ public class Missile : MonoBehaviour
 
         //rb.AddForce(this.transform.forward * speed);
         //rb.AddForce(Separation());
-    }
-
-    private void LateUpdate()
-    {
-        //rb.velocity = Vector3.zero;
     }
     public Vector3 Separation()
     {
@@ -128,14 +123,18 @@ public class Missile : MonoBehaviour
         return steer;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Die()
     {
-        MissileManager.Instance.RemoveMissile(this);
         if (explosionPrefab != null)
         {
             Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
         }
         Destroy(this.gameObject);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        MissileManager.Instance.RemoveMissile(this);
+        Die();
     }
 
     

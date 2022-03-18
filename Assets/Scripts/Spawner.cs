@@ -7,6 +7,8 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     GameObject objectToSpawn, spawnPoint, target;
 
+    PlayerFlightControls pf;
+
     [SerializeField]
     float launchAngleVariation = 40f, spawnPointVariation = .5f;
  
@@ -15,6 +17,7 @@ public class Spawner : MonoBehaviour
     float spawnTimeStamp;
 
     bool isOnCooldown;
+    bool isFiring = true;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,10 @@ public class Spawner : MonoBehaviour
         if (target == null)
         {
             target = GameObject.FindGameObjectWithTag("Player");
+            if (target != null)
+            {
+                pf = target.GetComponent<PlayerFlightControls>();
+            }
         }
 
         MissileManager.CreateInstance();
@@ -30,19 +37,30 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOnCooldown)
+        if (isFiring)
         {
-            if (Time.time > spawnTimeStamp)
+            if (isOnCooldown)
             {
-                isOnCooldown = false;
+                if (Time.time > spawnTimeStamp)
+                {
+                    isOnCooldown = false;
+                }
+            }
+            else
+            {
+                Spawn();
+                spawnTimeStamp = Time.time + timeBetweenSpawns;
+                isOnCooldown = true;
+            }
+
+            if (pf != null)
+            {
+                if (!pf.isAlive)
+                {
+                    isFiring = false;
+                }
             }
         }
-        else
-        {
-            Spawn();
-            spawnTimeStamp = Time.time + timeBetweenSpawns;
-            isOnCooldown = true;
-        } 
     }
 
     void Spawn()
