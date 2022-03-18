@@ -2031,7 +2031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8000195967692111174, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.82542795
+      value: 0.8254279
       objectReference: {fileID: 0}
     - target: {fileID: 8000195967692111174, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2039,7 +2039,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8000195967692111175, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.3333334
+      value: 1.7784256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000195968944181628, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
+      propertyPath: yawSpeed
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000195968944181628, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
+      propertyPath: rollSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000195968944181628, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
+      propertyPath: pitchSpeed
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}

@@ -82,31 +82,31 @@ public class PlayerFlightControls : MonoBehaviour
             float xDist = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue()).x;
             float yDist = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue()).y;
 
-            xDist = Utility.Map(xDist, 0, -Screen.width, 1, Screen.width);
-            yDist = Utility.Map(yDist, 0, -Screen.height, 1, Screen.height);
+            xDist = Utility.Map(xDist, 0, -yawSpeed, 1, yawSpeed);
+            yDist = Utility.Map(yDist, 0, -pitchSpeed, 1, pitchSpeed);
 
-            if (xDist < -Screen.width/2)
+            if (xDist < -yawSpeed / 2)
             {
-                xDist = -Screen.width / 2;
+                xDist = -yawSpeed / 2;
             }
-            if (xDist > Screen.width / 2)
+            if (xDist > yawSpeed / 2)
             {
-                xDist = Screen.width / 2;
+                xDist = yawSpeed / 2;
             }
 
-            if (yDist < -Screen.height / 2)
+            if (yDist < -pitchSpeed / 2)
             {
-                yDist = -Screen.height / 2;
+                yDist = -pitchSpeed / 2;
             }
-            if (yDist > Screen.height / 2)
+            if (yDist > pitchSpeed / 2)
             {
-                yDist = Screen.height / 2;
+                yDist = pitchSpeed / 2;
             }
 
             //Debug.Log(new Vector2(xDist, yDist).ToString());
 
-            lookRotation.x = -(yDist * 2) * Time.deltaTime;
-            lookRotation.y = (xDist * 2) * Time.deltaTime;
+            lookRotation.x = -(yDist * 2); //time.deltatime
+            lookRotation.y = (xDist * 2); //time.deltatime
             //Debug.Log(lookRotation);
         }
         else

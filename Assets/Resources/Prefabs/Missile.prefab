@@ -117,6 +117,7 @@ MonoBehaviour:
   turningSpeed: 4
   separationDistance: 4
   maxForce: 0
+  explosionPrefab: {fileID: 5286639445833195791, guid: 34e95327320af7043a71cab4be3f39db, type: 3}
   mask:
     serializedVersion: 2
     m_Bits: 128
