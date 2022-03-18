@@ -112,11 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73ac7b8adc6f974ebd57dc763676b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 51
+  speed: 10
   speedDampening: 0.1
-  turningSpeed: 1
+  turningSpeed: 4
   separationDistance: 4
   maxForce: 0
+  explosionPrefab: {fileID: 5286639445833195791, guid: 34e95327320af7043a71cab4be3f39db, type: 3}
   target: {fileID: 0}
 --- !u!54 &8771339343290204177
 Rigidbody:

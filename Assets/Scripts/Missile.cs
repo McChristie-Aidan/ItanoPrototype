@@ -17,6 +17,9 @@ public class Missile : MonoBehaviour
     [SerializeField]
     float maxForce;
 
+    [SerializeField]
+    GameObject explosionPrefab;
+
     Vector3 direction;
 
     public GameObject target;
@@ -109,6 +112,10 @@ public class Missile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         MissileManager.Instance.RemoveMissile(this);
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
+        }
         Destroy(this.gameObject);
     }
 }
