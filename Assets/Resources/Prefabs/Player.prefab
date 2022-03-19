@@ -138,12 +138,13 @@ MonoBehaviour:
   maxForwardSpeed: 50
   strafeSpeed: 20
   forwardAcceleration: 14.72
-  pitchSpeed: 35
-  yawSpeed: 15
+  pitchSpeed: 13
+  yawSpeed: 10
   rollSpeed: 1.5
   rollAcceleration: 4.84
   verticalLookDeadZone: 100
   horizontalLookDeadZone: 100
+  isAlive: 1
   explosionPrefab: {fileID: 5286639445833195791, guid: 34e95327320af7043a71cab4be3f39db, type: 3}
   deathCameraShakeAmount: 10
   deathCameraShakeLength: 10
