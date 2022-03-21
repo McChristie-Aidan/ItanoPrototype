@@ -10,8 +10,11 @@ public class ObjectiveManager : MonoBehaviour
         get { return _instance;}
     }
 
-    List<IObjective> objectives;
-    List<IObjective> activeObjectives;
+    [SerializeField]
+    int numberOfActiveObjectives;
+
+    List<Objective> objectives;
+    List<Objective> activeObjectives;
 
     private void Awake()
     {
@@ -24,7 +27,30 @@ public class ObjectiveManager : MonoBehaviour
             Destroy(this);
         }
     }
-    
+    private void Start()
+    {
+        objectives = new List<Objective>();
+        activeObjectives = new List<Objective>();
+    }
+    private void Update()
+    {
+        foreach (Objective item in objectives)
+        {
+            //remove inactive objectives
+            if (!item.enabled && activeObjectives.Contains(item))
+            {
+                activeObjectives.Remove(item);
+            }
+
+            if (activeObjectives.Count < numberOfActiveObjectives)
+            {
+                //randomly engage a new objective
+            }
+
+
+        }
+    }
+
     public void AddObjective(Objective obj)
     {
         objectives.Add(obj);
@@ -37,13 +63,6 @@ public class ObjectiveManager : MonoBehaviour
             GameManagment.CreateInstance();
         }
     }
-
-    private void Start()
-    {
-        objectives = new List<IObjective>();
-        activeObjectives = new List<IObjective>();
-    }
-
     public static void CreateInstance()
     {
         if (ObjectiveManager.Instance == null)
