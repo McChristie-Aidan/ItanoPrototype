@@ -25,10 +25,4 @@ public class QuadrantRandomizer : MonoBehaviour
         Instantiate(QuadrantList[Random.Range(0, QuadrantList.Count)], this.transform, false);
         Debug.Log("Generated");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

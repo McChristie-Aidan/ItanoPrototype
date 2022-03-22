@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Missile
+  - Points
   layers:
   - Default
   - TransparentFX

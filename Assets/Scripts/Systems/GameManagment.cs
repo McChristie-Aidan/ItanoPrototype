@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManagment : MonoBehaviour
 {
@@ -13,6 +12,8 @@ public class GameManagment : MonoBehaviour
     [HideInInspector]
     public int pointTotal;
 
+    private TextMeshProUGUI tmp;
+
     private void Awake()
     {
         if (_instance == null)
@@ -22,6 +23,16 @@ public class GameManagment : MonoBehaviour
         else
         {
             Destroy(this);
+        }
+
+        tmp = GameObject.FindGameObjectWithTag("Points").GetComponent<TextMeshProUGUI>();
+    }
+
+    private void Update()
+    {
+        if (tmp != null)
+        {
+            tmp.text = $"Points: {pointTotal}";
         }
     }
 

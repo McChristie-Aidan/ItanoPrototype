@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Objective : MonoBehaviour, IObjective
 {
+    protected virtual void Start()
+    {
+        ObjectiveManager.Instance.AddObjective(this);
+        this.Deactivate();
+    }
+
     [SerializeField]
     private int pointValue;
     [HideInInspector]
@@ -14,7 +20,7 @@ public class Objective : MonoBehaviour, IObjective
 
     public virtual void Activate()
     {
-        this.gameObject.SetActive(false);
+        this.gameObject.SetActive(true);
     }
 
     public virtual void Deactivate()

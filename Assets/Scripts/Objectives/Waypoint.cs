@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Waypoint : Objective
 {
-    private void OnCollisionEnter(Collision collision)
+    protected override void Start()
     {
-        //do waypoint things
-        GameManagment.AddPoints(this.PointValue);
-        this.Deactivate();
+        base.Start();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            //do waypoint things
+            GameManagment.AddPoints(this.PointValue);
+            this.Deactivate(); 
+        }
+    }
+    
+    
 
     public override void Activate()
     {

@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  speedDampening: 0.1
+  speedDampening: 1
   turningSpeed: 2
   separationDistance: 4
   maxForce: 0

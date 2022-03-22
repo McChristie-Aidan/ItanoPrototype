@@ -147,7 +147,7 @@ MonoBehaviour:
   isAlive: 1
   explosionPrefab: {fileID: 5286639445833195791, guid: 34e95327320af7043a71cab4be3f39db, type: 3}
   deathCameraShakeAmount: 10
-  deathCameraShakeLength: 10
+  deathCameraShakeLength: 2
 --- !u!114 &8000195968944181571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,13 +279,13 @@ MonoBehaviour:
     m_ActionName: Player/Strafe[/Keyboard/q,/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7189730763712831090}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 8000195968944181628}
+        m_TargetAssemblyTypeName: PlayerFlightControls, Assembly-CSharp
+        m_MethodName: OnReset
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

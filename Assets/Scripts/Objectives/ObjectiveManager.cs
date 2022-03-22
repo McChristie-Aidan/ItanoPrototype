@@ -11,7 +11,8 @@ public class ObjectiveManager : MonoBehaviour
     }
 
     [SerializeField]
-    int numberOfActiveObjectives;
+    int numberOfActiveObjectives = 7;
+    int objectivesInScene = 0;
 
     List<Objective> objectives;
     List<Objective> activeObjectives;
@@ -37,23 +38,34 @@ public class ObjectiveManager : MonoBehaviour
         foreach (Objective item in objectives)
         {
             //remove inactive objectives
-            if (!item.enabled && activeObjectives.Contains(item))
+            if (!item.isActiveAndEnabled && activeObjectives.Contains(item))
             {
                 activeObjectives.Remove(item);
             }
 
-            if (activeObjectives.Count < numberOfActiveObjectives)
+            if (activeObjectives.Count > numberOfActiveObjectives)
             {
-                //randomly engage a new objective
+                item.Deactivate();
             }
+        }
 
+        while (activeObjectives.Count < numberOfActiveObjectives)
+        {
+            //randomly engage a new objective
+            int i = Random.Range(0, objectives.Count - 1);
 
+            if (!objectives[i].isActiveAndEnabled)
+            {
+                objectives[i].Activate();
+                activeObjectives.Add(objectives[i]);
+            }
         }
     }
 
     public void AddObjective(Objective obj)
     {
         objectives.Add(obj);
+        objectivesInScene++;
     }
 
     void CheckInstance()

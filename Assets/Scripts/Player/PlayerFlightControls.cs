@@ -35,7 +35,7 @@ public class PlayerFlightControls : MonoBehaviour
     [SerializeField]
     GameObject explosionPrefab;
     [SerializeField]
-    float deathCameraShakeAmount = 5f, deathCameraShakeLength = 1f;
+    float deathCameraShakeAmount = 10f, deathCameraShakeLength = 2f;
 
     PlayerControls playerControls;
 
@@ -205,12 +205,16 @@ public class PlayerFlightControls : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         isAlive = false;
+        CameraEffects.Instance.ShakeCam(deathCameraShakeAmount, deathCameraShakeLength);
+        GetComponent<Renderer>().enabled = false;
         if (explosionPrefab != null)
         {
             Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
         }
-        MissileManager.Instance.DestroyAllMissiles();
-        CameraEffects.Instance.ShakeCam(deathCameraShakeAmount, deathCameraShakeLength);
-        GetComponent<Renderer>().enabled = false;
+        if (MissileManager.Instance != null)
+        {
+            MissileManager.Instance.DestroyAllMissiles();
+        }
+        
     }
 }

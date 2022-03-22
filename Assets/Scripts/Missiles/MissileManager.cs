@@ -13,7 +13,7 @@ public class MissileManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (_instance != null)
+        if (_instance == null)
         {
             _instance = this;
         }
@@ -54,9 +54,10 @@ public class MissileManager : MonoBehaviour
 
     public void DestroyAllMissiles()
     {
-        foreach (Missile m in activeMissiles)
+        for (int i = 0; i < activeMissiles.Count; i++)
         {
-            m.Die();
-        }
+            activeMissiles[i].Die();
+            activeMissiles.Remove(activeMissiles[i]);
+        }  
     }
 }
