@@ -37,29 +37,33 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isFiring)
+        if (Time.timeSinceLevelLoad > 15)
         {
-            if (isOnCooldown)
+            if (isFiring)
             {
-                if (Time.time > spawnTimeStamp)
+                if (isOnCooldown)
                 {
-                    isOnCooldown = false;
+                    if (Time.time > spawnTimeStamp)
+                    {
+                        isOnCooldown = false;
+                    }
                 }
-            }
-            else
-            {
-                Spawn();
-                spawnTimeStamp = Time.time + timeBetweenSpawns;
-                isOnCooldown = true;
+                else
+                {
+                    Spawn();
+                    spawnTimeStamp = Time.time + timeBetweenSpawns;
+                    isOnCooldown = true;
+                }
+
+                if (pf != null)
+                {
+                    if (!pf.isAlive)
+                    {
+                        isFiring = false;
+                    }
+                }
             }
 
-            if (pf != null)
-            {
-                if (!pf.isAlive)
-                {
-                    isFiring = false;
-                }
-            }
         }
     }
 
