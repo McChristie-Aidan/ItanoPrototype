@@ -151,12 +151,11 @@ public class PlayerFlightControls : MonoBehaviour
 
     }
     void HandleCameraEffects()
-
     {
-        if (activeForwardSpeed > maxForwardSpeed * .8 )
-        {
-            CameraEffects.Instance.ShakeCam(activeForwardSpeed * .02f);
-        }
+        //if (activeForwardSpeed > maxForwardSpeed * .8 )
+        //{
+        //    CameraEffects.Instance.ShakeCam(activeForwardSpeed * .02f);
+        //}
         float targetFOV = activeForwardSpeed + 50;
         //float targetFOV = Mathf.Lerp(minForwardSpeed, maxForwardSpeed, Mathf.InverseLerp(60, 90, activeForwardSpeed));
         CameraEffects.Instance.SetCamFOV(targetFOV);
