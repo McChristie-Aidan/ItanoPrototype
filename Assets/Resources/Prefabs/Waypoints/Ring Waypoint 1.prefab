@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 1504735946806062858}
   - component: {fileID: 1504735946806062900}
   - component: {fileID: 5830416591948960995}
+  - component: {fileID: 8614223773510914820}
   m_Layer: 0
   m_Name: Ring Waypoint 1
   m_TagString: Untagged
@@ -210,6 +211,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &8614223773510914820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504735946806062903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085f4b364e61a7744a3427b51090d839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7348531996960944931, guid: 386dae2100858cb498e044a118bac980, type: 3}
 --- !u!1 &8470485730084162892
 GameObject:
   m_ObjectHideFlags: 0

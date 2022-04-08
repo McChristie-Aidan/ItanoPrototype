@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1219218873505099133}
   - component: {fileID: 5317845812407723330}
   - component: {fileID: -5241562692764137975}
+  - component: {fileID: 7673546991992972185}
   m_Layer: 0
   m_Name: Capsule Waypoint
   m_TagString: Untagged
@@ -111,3 +112,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointValue: 100
+--- !u!114 &7673546991992972185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6877467604411510811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085f4b364e61a7744a3427b51090d839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7348531996960944931, guid: 386dae2100858cb498e044a118bac980, type: 3}

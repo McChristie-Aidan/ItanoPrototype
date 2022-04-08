@@ -189,7 +189,7 @@ MonoBehaviour:
   forwardAcceleration: 14.72
   pitchSpeed: 13
   yawSpeed: 10
-  rollSpeed: 1.5
+  rollSpeed: 3
   rollAcceleration: 4.84
   verticalLookDeadZone: 100
   horizontalLookDeadZone: 100

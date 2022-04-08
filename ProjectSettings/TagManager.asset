@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Missile
   - Points
+  - Canvas
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3090025165341614562}
   - component: {fileID: 3090025165341614563}
   - component: {fileID: 3090025165341614560}
+  - component: {fileID: 2654279437607339609}
   m_Layer: 0
   m_Name: Cube Waypoint
   m_TagString: Untagged
@@ -110,3 +111,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointValue: 100
+--- !u!114 &2654279437607339609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3090025165341614561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085f4b364e61a7744a3427b51090d839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7348531996960944931, guid: 386dae2100858cb498e044a118bac980, type: 3}
