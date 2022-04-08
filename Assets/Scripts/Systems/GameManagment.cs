@@ -11,9 +11,6 @@ public class GameManagment : MonoBehaviour
 
     [HideInInspector]
     public int pointTotal;
-
-    private TextMeshProUGUI tmp;
-
     private void Awake()
     {
         if (_instance == null)
@@ -23,17 +20,7 @@ public class GameManagment : MonoBehaviour
         else
         {
             Destroy(this);
-        }
-
-        tmp = GameObject.FindGameObjectWithTag("Points").GetComponent<TextMeshProUGUI>();
-    }
-
-    private void Update()
-    {
-        if (tmp != null)
-        {
-            tmp.text = $"Points: {pointTotal}";
-        }
+        }     
     }
 
     public static void AddPoints(int points)
