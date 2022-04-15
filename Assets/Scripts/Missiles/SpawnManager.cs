@@ -11,8 +11,16 @@ public class SpawnManager : MonoBehaviour
     }
 
     List<Spawner> spawners;
-    int spawnersInScene;
+    public int maxActiveSpawners;
+    public float timeBetweenWaves = 30f, timeWaitForNextCountDown = 10f;
+    public int missilesPerWave = 10;
+    [HideInInspector]
+    public int spawnersInScene, currentWaveNumber;
+    [HideInInspector]
+    public float waveTimeStamp;
 
+    public bool useBiggerCooldown;
+    bool firedThisWave = false;
     private void Awake()
     {
         if (_instance == null)
@@ -24,11 +32,41 @@ public class SpawnManager : MonoBehaviour
         {
             Destroy(this);
         }
+        waveTimeStamp = Time.time + timeBetweenWaves;
     }
 
     private void Update()
     {
-        
+        SpawnNextWave();
+    }
+
+    public void SpawnNextWave()
+    {
+        if (Time.time > waveTimeStamp)
+        {
+            if (useBiggerCooldown)
+            {               
+                waveTimeStamp = Time.time + timeBetweenWaves;
+                useBiggerCooldown = false;
+            }
+            else
+            {              
+                waveTimeStamp = Time.time + timeWaitForNextCountDown;
+                useBiggerCooldown = true;
+                firedThisWave = false;
+            }
+        }
+
+        if (!useBiggerCooldown && Time.time > waveTimeStamp - timeWaitForNextCountDown/2 && !firedThisWave)
+        {
+            //fire wave
+            foreach (Spawner spawner in spawners)
+            {
+                spawner.missilesPerWave += this.missilesPerWave;
+            }
+            firedThisWave = true;
+            currentWaveNumber++;
+        }
     }
 
     public void AddSpawner(Spawner obj)

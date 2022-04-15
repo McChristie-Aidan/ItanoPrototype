@@ -5,19 +5,86 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-     private TextMeshProUGUI tmp;
+    private TextMeshProUGUI points;
+    public TextMeshProUGUI waveCount, warning, waveTimer;
+    PlayerFlightControls player;
     // Start is called before the first frame update
     void Start()
     {
-        tmp = GameObject.FindGameObjectWithTag("Points").GetComponent<TextMeshProUGUI>();
+        points = GameObject.FindGameObjectWithTag("Points").GetComponent<TextMeshProUGUI>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFlightControls>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (tmp != null)
+        //update points
+        Points();
+        //Update wave count
+        WaveCount();
+        //update warning sign
+        Warning();
+        //update wave timer
+        WaveTimer();
+    }
+    void Points()
+    {
+        if (points != null)
         {
-            tmp.text = $"Points: {GameManagment.Instance.pointTotal}";
+            points.text = $"Points: {GameManagment.Instance.pointTotal}";
+        }
+    }
+    void WaveCount()
+    {
+        if (waveCount != null)
+        {
+            if (SpawnManager.Instance.currentWaveNumber > 0)
+            {
+                waveCount.text = $"Wave: {SpawnManager.Instance.currentWaveNumber}";
+            }
+            else
+            {
+                waveCount.text = "";
+            }
+        }
+    }
+    void Warning()
+    {
+        if (warning != null)
+        {
+            if (!SpawnManager.Instance.useBiggerCooldown)
+            {
+                //Oscillate alpha
+            }
+            else
+            {
+                if (warning.color.a > 0)
+                {
+                    //reduces any remaining alpha to 0
+                    warning.color = new Color(
+                        warning.color.r,
+                        warning.color.g,
+                        warning.color.b,
+                        warning.color.a - Time.deltaTime);
+                }
+            }
+        }
+    }
+    void WaveTimer()
+    {
+        if (waveTimer != null)
+        {
+            if (player.isAlive)
+            {
+                if (SpawnManager.Instance.useBiggerCooldown)
+                {
+                    waveTimer.text = $"Next Wave In: {(SpawnManager.Instance.waveTimeStamp - Time.time).ToString("0.00")}";
+                }
+                else
+                {
+                    waveTimer.text = $"Waiting For: {(SpawnManager.Instance.waveTimeStamp - Time.time).ToString("0.00")}";
+                }
+            }
         }
     }
 }

@@ -5,9 +5,13 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject objectToSpawn, spawnPoint, target;
+    GameObject objectToSpawn, spawnPoint, target, launchVFX;
+    ParticleSystem launchPS;
 
     PlayerFlightControls pf;
+
+    [HideInInspector]
+    public int missilesPerWave;
 
     [SerializeField]
     float launchAngleVariation = 40f, spawnPointVariation = .5f;
@@ -16,8 +20,9 @@ public class Spawner : MonoBehaviour
     float timeBetweenSpawns = 2f;
     float spawnTimeStamp;
 
-    bool isOnCooldown;
-    bool isFiring = true;
+    bool isOnCooldown, isFiring = true;
+    [HideInInspector]
+    public bool canFire;
 
     // Start is called before the first frame update
     void Start()
@@ -32,14 +37,16 @@ public class Spawner : MonoBehaviour
         }
 
         MissileManager.CreateInstance();
+        SpawnManager.Instance.AddSpawner(this);
+        launchPS = launchVFX.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad > 15)
+        if (isFiring)
         {
-            if (isFiring)
+            if (missilesPerWave > 0)
             {
                 if (isOnCooldown)
                 {
@@ -53,17 +60,17 @@ public class Spawner : MonoBehaviour
                     Spawn();
                     spawnTimeStamp = Time.time + timeBetweenSpawns;
                     isOnCooldown = true;
-                }
-
-                if (pf != null)
-                {
-                    if (!pf.isAlive)
-                    {
-                        isFiring = false;
-                    }
+                    missilesPerWave--;
                 }
             }
 
+            if (pf != null)
+            {
+                if (!pf.isAlive)
+                {
+                    isFiring = false;
+                }
+            }
         }
     }
 
@@ -86,5 +93,7 @@ public class Spawner : MonoBehaviour
         {
             missile.target = this.target;
         }
+
+        launchPS.Play();
     }
 }
