@@ -17,11 +17,12 @@ public class PlayerFlightControls : MonoBehaviour
     public float pitchSpeed = 7f, yawSpeed = 10f, rollSpeed = 10f;
     private float activeRollSpeed;
     public float rollAcceleration = 20f;
+    public float lookAcceleration = 2f;
 
     public float verticalLookDeadZone = 10f;
     public float horizontalLookDeadZone = 10f;
 
-    private Vector3 lookRotation;
+    private Vector3 activeLookRotation;
     private Vector2 lookInput;
 
     private Vector2 movementInput;
@@ -119,15 +120,21 @@ public class PlayerFlightControls : MonoBehaviour
 
             //Debug.Log(new Vector2(xDist, yDist).ToString());
 
-            lookRotation.x = -(yDist * 2); //time.deltatime
-            lookRotation.y = (xDist * 2); //time.deltatime
+            //activeLookRotation.x += -(yDist * 2); //time.deltatime
+            //activeLookRotation.y += (xDist * 2); //time.deltatime
+            activeLookRotation.x = Mathf.Lerp(activeLookRotation.x, -(yDist * 2), lookAcceleration * Time.deltaTime);
+            activeLookRotation.y = Mathf.Lerp(activeLookRotation.y, xDist * 2, lookAcceleration * Time.deltaTime);
+
+            Debug.Log(activeLookRotation.ToString());
             //Debug.Log(lookRotation);
         }
         else
         {
-            lookRotation.x = -(lookInput.y * 4);
-            lookRotation.y = lookInput.x * 4;
+            activeLookRotation.x = -(lookInput.y * 4);
+            activeLookRotation.y = lookInput.x * 4;
         }
+
+        
     }
     void HandleMovement()
     {
@@ -141,13 +148,14 @@ public class PlayerFlightControls : MonoBehaviour
     void HandleRotation()
     {
         activeRollSpeed = Mathf.Lerp(activeRollSpeed, movementInput.x * rollSpeed, rollAcceleration * Time.deltaTime);
-        lookRotation = new Vector3(
-            lookRotation.x * pitchSpeed,
-            lookRotation.y * yawSpeed,
-            lookRotation.z * rollSpeed) * Time.deltaTime;
-        lookRotation.z = -activeRollSpeed;
 
-        this.transform.Rotate(lookRotation, Space.Self);
+        activeLookRotation = new Vector3(
+            activeLookRotation.x * pitchSpeed,
+            activeLookRotation.y * yawSpeed,
+            activeLookRotation.z * rollSpeed) * Time.deltaTime;
+        activeLookRotation.z = -activeRollSpeed;
+
+        this.transform.Rotate(activeLookRotation, Space.Self);
 
     }
     void HandleCameraEffects()
@@ -164,7 +172,7 @@ public class PlayerFlightControls : MonoBehaviour
     {
         //Debug.Log("Moving");
         movementInput = callbackContext.ReadValue<Vector2>();
-        lookRotation.z = -callbackContext.ReadValue<Vector2>().x;
+        activeLookRotation.z = -callbackContext.ReadValue<Vector2>().x;
     }
 
     public void OnLook(InputAction.CallbackContext callbackContext)
