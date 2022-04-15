@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     {
         points = GameObject.FindGameObjectWithTag("Points").GetComponent<TextMeshProUGUI>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFlightControls>();
+        warning.color = new Color(1, 1, 1, 0);
     }
 
     // Update is called once per frame
@@ -53,8 +54,9 @@ public class UIManager : MonoBehaviour
         if (warning != null)
         {
             if (!SpawnManager.Instance.useBiggerCooldown)
-            {
-                //Oscillate alpha
+            {      
+                //todo make this color oscillate
+                warning.color = new Color(1,0,0,1);
             }
             else
             {
@@ -82,7 +84,7 @@ public class UIManager : MonoBehaviour
                 }
                 else
                 {
-                    waveTimer.text = $"Waiting For: {(SpawnManager.Instance.waveTimeStamp - Time.time).ToString("0.00")}";
+                    waveTimer.text = $"Spawning Current Wave: {(SpawnManager.Instance.waveTimeStamp - Time.time).ToString("0.00")}";
                 }
             }
         }

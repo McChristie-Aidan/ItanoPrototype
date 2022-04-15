@@ -94,6 +94,9 @@ public class Spawner : MonoBehaviour
             missile.target = this.target;
         }
 
-        launchPS.Play();
+        if (launchPS != null)
+        {
+            launchPS.Play();
+        }
     }
 }
