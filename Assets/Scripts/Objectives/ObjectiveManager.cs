@@ -64,6 +64,10 @@ public class ObjectiveManager : MonoBehaviour
 
     public void AddObjective(Objective obj)
     {
+        if (_instance == null)
+        {
+            CreateInstance();
+        }
         objectives.Add(obj);
         objectivesInScene++;
     }
