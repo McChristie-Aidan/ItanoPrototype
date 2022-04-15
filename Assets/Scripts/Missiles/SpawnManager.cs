@@ -19,8 +19,8 @@ public class SpawnManager : MonoBehaviour
     [HideInInspector]
     public float waveTimeStamp;
 
-    public bool useBiggerCooldown;
-    bool firedThisWave = false;
+    public bool useBiggerCooldown = false;
+    public bool firedThisWave;
     private void Awake()
     {
         if (_instance == null)
@@ -47,25 +47,25 @@ public class SpawnManager : MonoBehaviour
             if (useBiggerCooldown)
             {               
                 waveTimeStamp = Time.time + timeBetweenWaves;
-                useBiggerCooldown = false;
+                useBiggerCooldown = false;             
             }
             else
             {              
                 waveTimeStamp = Time.time + timeWaitForNextCountDown;
                 useBiggerCooldown = true;
                 firedThisWave = false;
+                currentWaveNumber++;
             }
         }
 
-        if (!useBiggerCooldown && Time.time > waveTimeStamp - timeWaitForNextCountDown/2 && !firedThisWave)
+        if (useBiggerCooldown && Time.time > waveTimeStamp - timeWaitForNextCountDown/2 && firedThisWave == false)
         {
             //fire wave
             foreach (Spawner spawner in spawners)
             {
                 spawner.missilesPerWave += this.missilesPerWave;
             }
-            firedThisWave = true;
-            currentWaveNumber++;
+            firedThisWave = true;           
         }
     }
 

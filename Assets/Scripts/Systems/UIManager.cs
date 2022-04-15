@@ -53,12 +53,12 @@ public class UIManager : MonoBehaviour
     {
         if (warning != null)
         {
-            if (!SpawnManager.Instance.useBiggerCooldown)
-            {      
+            if (SpawnManager.Instance.useBiggerCooldown && SpawnManager.Instance.currentWaveNumber > 0)
+            {
                 //todo make this color oscillate
                 warning.color = new Color(1,0,0,1);
             }
-            else
+            else       
             {
                 if (warning.color.a > 0)
                 {
