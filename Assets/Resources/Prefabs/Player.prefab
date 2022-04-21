@@ -189,11 +189,12 @@ MonoBehaviour:
   forwardAcceleration: 14.72
   pitchSpeed: 17
   yawSpeed: 13
-  rollSpeed: 3
+  rollSpeed: 4
   rollAcceleration: 4.84
-  lookAcceleration: 0.5
-  verticalLookDeadZone: 100
-  horizontalLookDeadZone: 100
+  horizontalLookAcceleration: 2
+  verticalLookAccelerarion: 1
+  verticalLookDeadZone: 0
+  horizontalLookDeadZone: 0
   isAlive: 1
   explosionPrefab: {fileID: 5286639445833195791, guid: 34e95327320af7043a71cab4be3f39db, type: 3}
   deathCameraShakeAmount: 10

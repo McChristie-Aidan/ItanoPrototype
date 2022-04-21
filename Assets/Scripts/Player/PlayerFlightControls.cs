@@ -17,7 +17,8 @@ public class PlayerFlightControls : MonoBehaviour
     public float pitchSpeed = 7f, yawSpeed = 10f, rollSpeed = 10f;
     private float activeRollSpeed;
     public float rollAcceleration = 20f;
-    public float lookAcceleration = 2f;
+    public float horizontalLookAcceleration = 2f;
+    public float verticalLookAccelerarion = 1f;
 
     public float verticalLookDeadZone = 10f;
     public float horizontalLookDeadZone = 10f;
@@ -99,6 +100,9 @@ public class PlayerFlightControls : MonoBehaviour
 
             xDist = Utility.Map(xDist, 0, -yawSpeed, 1, yawSpeed);
             yDist = Utility.Map(yDist, 0, -pitchSpeed, 1, pitchSpeed);
+            //xDist = Utility.Map(xDist, 0, -yawSpeed, 1, yawSpeed);
+            //yDist = Utility.Map(yDist, 0, -pitchSpeed, 1, pitchSpeed);
+
 
             if (xDist < -yawSpeed / 2)
             {
@@ -118,12 +122,12 @@ public class PlayerFlightControls : MonoBehaviour
                 yDist = pitchSpeed / 2;
             }
 
-            //Debug.Log(new Vector2(xDist, yDist).ToString());
+            Debug.Log(new Vector2(xDist, yDist).ToString());
 
             //activeLookRotation.x += -(yDist * 2); //time.deltatime
             //activeLookRotation.y += (xDist * 2); //time.deltatime
-            activeLookRotation.x = Mathf.Lerp(activeLookRotation.x, -(yDist * 2), lookAcceleration * Time.deltaTime);
-            activeLookRotation.y = Mathf.Lerp(activeLookRotation.y, xDist * 2, lookAcceleration * Time.deltaTime);
+            activeLookRotation.x = Mathf.Lerp(activeLookRotation.x, -(yDist * 2), verticalLookAccelerarion * Time.deltaTime);
+            activeLookRotation.y = Mathf.Lerp(activeLookRotation.y, xDist * 2, horizontalLookAcceleration * Time.deltaTime);
 
             Debug.Log(activeLookRotation.ToString());
             //Debug.Log(lookRotation);
