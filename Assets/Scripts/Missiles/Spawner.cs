@@ -38,7 +38,10 @@ public class Spawner : MonoBehaviour
 
         MissileManager.CreateInstance();
         SpawnManager.Instance.AddSpawner(this);
-        launchPS = launchVFX.GetComponent<ParticleSystem>();
+        if (launchVFX != null)
+        {
+            launchPS = launchVFX.GetComponent<ParticleSystem>();
+        }
     }
 
     // Update is called once per frame
@@ -77,15 +80,16 @@ public class Spawner : MonoBehaviour
     void Spawn()
     {
         GameObject go = Instantiate(
-            objectToSpawn, 
+            objectToSpawn,
             spawnPoint.transform.position + new Vector3(
                 Random.Range(-spawnPointVariation, spawnPointVariation),
                 0,
-                Random.Range(-spawnPointVariation, spawnPointVariation)), 
+                Random.Range(-spawnPointVariation, spawnPointVariation)),
+            spawnPoint.transform.rotation *
             Quaternion.Euler(new Vector3(
-                -90 + Random.Range(-launchAngleVariation, launchAngleVariation),
                 Random.Range(-launchAngleVariation, launchAngleVariation),
-                Random.Range(-launchAngleVariation, launchAngleVariation))), 
+                Random.Range(-launchAngleVariation, launchAngleVariation),
+                Random.Range(-launchAngleVariation, launchAngleVariation))),
             this.transform);
         Missile missile = go.GetComponent<Missile>();
 
