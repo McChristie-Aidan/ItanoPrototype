@@ -6,7 +6,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     private TextMeshProUGUI points;
-    public TextMeshProUGUI waveCount, warning, waveTimer;
+    public TextMeshProUGUI waveCount, warning, waveTimer, missileCount;
     PlayerFlightControls player;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
         Warning();
         //update wave timer
         WaveTimer();
+
+        MissileCount();
     }
     void Points()
     {
@@ -98,6 +100,21 @@ public class UIManager : MonoBehaviour
                     waveTimer.text = $"Spawning Current Wave: {(SpawnManager.Instance.waveTimeStamp - Time.time).ToString("0.00")}";
                 }
             }
+        }
+    }
+    void MissileCount()
+    {
+        if (missileCount != null)
+        {
+            if (MissileManager.Instance.activeMissiles.Count > 0)
+            {
+                missileCount.text = $"Missiles left: {MissileManager.Instance.activeMissiles.Count.ToString()}";
+            }
+            else
+            {
+                missileCount.text = "";
+            }
+            
         }
     }
 }

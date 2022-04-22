@@ -159,7 +159,7 @@ public class PlayerFlightControls : MonoBehaviour
             activeLookRotation.z * rollSpeed) * Time.deltaTime;
         activeLookRotation.z = -activeRollSpeed;
 
-        this.transform.Rotate(activeLookRotation, Space.Self);
+        this.transform.Rotate(activeLookRotation , Space.Self);
 
     }
     void HandleCameraEffects()
