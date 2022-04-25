@@ -3120,7 +3120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062900, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: pointValue
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062903, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: m_Name
@@ -3198,7 +3198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062900, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: pointValue
-      value: 75
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062903, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: m_Name
@@ -3268,7 +3268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062900, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: pointValue
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062903, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: m_Name
@@ -3338,7 +3338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062900, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: pointValue
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062903, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: m_Name
@@ -3416,7 +3416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062900, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: pointValue
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062903, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: m_Name
@@ -3492,6 +3492,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1504735946806062900, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
+      propertyPath: pointValue
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062903, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: m_Name
       value: Ring Waypoint 1 (4)
@@ -3560,7 +3564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062900, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: pointValue
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1504735946806062903, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: m_Name
