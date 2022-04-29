@@ -92,14 +92,14 @@ public class PlayerFlightControls : MonoBehaviour
     {
         if (!isGamepad)
         {
-            //float xDist = Mouse.current.position.ReadValue().x - Screen.width / 2;
-            //float yDist = Mouse.current.position.ReadValue().y - Screen.height / 2;
+            float xDist = Mouse.current.position.ReadValue().x;
+            float yDist = Mouse.current.position.ReadValue().y;
 
-            float xDist = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue()).x;
-            float yDist = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue()).y;
+            //float xDist = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue()).x;
+            //float yDist = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue()).y;
 
-            xDist = Utility.Map(xDist, 0, -yawSpeed, 1, yawSpeed);
-            yDist = Utility.Map(yDist, 0, -pitchSpeed, 1, pitchSpeed);
+            xDist = Utility.Map(xDist, 0, -yawSpeed, Screen.width, yawSpeed);
+            yDist = Utility.Map(yDist, 0, -pitchSpeed, Screen.height, pitchSpeed);
             //xDist = Utility.Map(xDist, 0, -yawSpeed, 1, yawSpeed);
             //yDist = Utility.Map(yDist, 0, -pitchSpeed, 1, pitchSpeed);
 
@@ -129,13 +129,20 @@ public class PlayerFlightControls : MonoBehaviour
             activeLookRotation.x = Mathf.Lerp(activeLookRotation.x, -(yDist * 2), verticalLookAccelerarion * Time.deltaTime);
             activeLookRotation.y = Mathf.Lerp(activeLookRotation.y, xDist * 2, horizontalLookAcceleration * Time.deltaTime);
 
-            Debug.Log(activeLookRotation.ToString());
+            //Debug.Log(activeLookRotation.ToString());
             //Debug.Log(lookRotation);
         }
         else
         {
-            activeLookRotation.x = -(lookInput.y * 4);
-            activeLookRotation.y = lookInput.x * 4;
+            lookInput.x = Mathf.Clamp(lookInput.x, -1, 1);
+            lookInput.y = Mathf.Clamp(lookInput.y, -1, 1);
+
+            lookInput.x = Utility.Map(lookInput.x, -1, -yawSpeed, 1, yawSpeed);
+            lookInput.y = Utility.Map(lookInput.y, -1, -yawSpeed, 1, yawSpeed);
+            Debug.Log(lookInput.ToString());
+
+            activeLookRotation.x = Mathf.Lerp(activeLookRotation.x, -lookInput.y * 2, verticalLookAccelerarion * Time.deltaTime);
+            activeLookRotation.y = Mathf.Lerp(activeLookRotation.y, lookInput.x * 2, verticalLookAccelerarion * Time.deltaTime);
         }
 
         

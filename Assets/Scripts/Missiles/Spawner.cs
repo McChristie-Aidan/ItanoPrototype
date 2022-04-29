@@ -79,18 +79,30 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        GameObject go = Instantiate(
-            objectToSpawn,
-            spawnPoint.transform.position + new Vector3(
+        GameObject go = ObjectPool.Instance.GetObject(objectToSpawn.name);
+
+        go.transform.position = spawnPoint.transform.position + new Vector3(
                 Random.Range(-spawnPointVariation, spawnPointVariation),
                 0,
-                Random.Range(-spawnPointVariation, spawnPointVariation)),
-            spawnPoint.transform.rotation *
+                Random.Range(-spawnPointVariation, spawnPointVariation));
+        go.transform.rotation = spawnPoint.transform.rotation *
             Quaternion.Euler(new Vector3(
                 Random.Range(-launchAngleVariation, launchAngleVariation),
                 Random.Range(-launchAngleVariation, launchAngleVariation),
-                Random.Range(-launchAngleVariation, launchAngleVariation))),
-            this.transform);
+                Random.Range(-launchAngleVariation, launchAngleVariation)));
+
+        //GameObject go = Instantiate(
+        //    objectToSpawn,
+        //    spawnPoint.transform.position + new Vector3(
+        //        Random.Range(-spawnPointVariation, spawnPointVariation),
+        //        0,
+        //        Random.Range(-spawnPointVariation, spawnPointVariation)),
+        //    spawnPoint.transform.rotation *
+        //    Quaternion.Euler(new Vector3(
+        //        Random.Range(-launchAngleVariation, launchAngleVariation),
+        //        Random.Range(-launchAngleVariation, launchAngleVariation),
+        //        Random.Range(-launchAngleVariation, launchAngleVariation))),
+        //    this.transform);
         Missile missile = go.GetComponent<Missile>();
 
         if (missile != null)
@@ -102,5 +114,9 @@ public class Spawner : MonoBehaviour
         {
             launchPS.Play();
         }
+    }
+    public void PrepareWave()
+    {
+
     }
 }

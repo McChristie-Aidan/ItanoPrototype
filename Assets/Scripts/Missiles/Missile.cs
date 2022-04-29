@@ -42,7 +42,7 @@ public class Missile : MonoBehaviour
             if (target == null)
             {
                 Debug.Log("Missile has no target");
-                Destroy(this);
+                this.gameObject.SetActive(false);
             }
         }
 
@@ -87,6 +87,7 @@ public class Missile : MonoBehaviour
 
         //rb.AddForce(this.transform.forward * speed);
         //rb.AddForce(Separation());
+        //limit velocity of the missile
     }
     public Vector3 Separation()
     {
@@ -129,7 +130,7 @@ public class Missile : MonoBehaviour
         {
             Instantiate(explosionPrefab, this.transform.position, this.transform.rotation);
         }
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
     private void OnCollisionEnter(Collision collision)
     {
