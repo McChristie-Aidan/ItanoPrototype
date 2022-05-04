@@ -123,7 +123,7 @@ public class PlayerFlightControls : MonoBehaviour
                 yDist = pitchSpeed / 2;
             }
 
-            Debug.Log(new Vector2(xDist, yDist).ToString());
+            //Debug.Log(new Vector2(xDist, yDist).ToString());
 
             //activeLookRotation.x += -(yDist * 2); //time.deltatime
             //activeLookRotation.y += (xDist * 2); //time.deltatime
