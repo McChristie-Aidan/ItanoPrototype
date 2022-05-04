@@ -12,6 +12,7 @@ public class PlayerFlightControls : MonoBehaviour
     private float activeForwardSpeed, activeStrafeSpeed;
     public float ActiveForwardSpeed => activeForwardSpeed;
     public float forwardAcceleration = 7f;
+    public float forwardDeceleration;
 
 
     public float pitchSpeed = 7f, yawSpeed = 10f, rollSpeed = 10f;
@@ -149,7 +150,21 @@ public class PlayerFlightControls : MonoBehaviour
     }
     void HandleMovement()
     {
-        activeForwardSpeed += (forwardAcceleration * movementInput.y) * Time.deltaTime;
+        bool isDecelerating = false;
+        if (movementInput.y < 0)
+        {
+            isDecelerating = true;
+        }
+
+        if (!isDecelerating)
+        {
+            activeForwardSpeed += (forwardAcceleration * movementInput.y) * Time.deltaTime;
+        }
+        else
+        {
+            activeForwardSpeed += (forwardDeceleration * movementInput.y) * Time.deltaTime;
+        }
+
         activeForwardSpeed = Mathf.Clamp(activeForwardSpeed, minForwardSpeed, maxForwardSpeed);
         /*
          * for strafing movement
