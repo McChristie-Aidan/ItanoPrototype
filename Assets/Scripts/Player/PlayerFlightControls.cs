@@ -216,6 +216,18 @@ public class PlayerFlightControls : MonoBehaviour
             SceneManagement.Instance.LoadCurrentLevel();
         }
     }
+    public static void OnPause()
+    {
+        AudioListener.pause = !AudioListener.pause;
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+        }
+        else if(Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+    }
     public void OnDeviceChange(PlayerInput pi)
     {
         isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
