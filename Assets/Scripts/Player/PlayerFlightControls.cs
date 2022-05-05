@@ -46,15 +46,7 @@ public class PlayerFlightControls : MonoBehaviour
 
     private void Awake()
     {
-        playerControls = new PlayerControls();
-    }
-    private void OnEnable()
-    {
-        playerControls.Enable();
-    }
-    private void OnDisable()
-    {
-        playerControls.Disable();
+        //playerControls = new PlayerControls();
     }
     private void Start()
     {
@@ -63,7 +55,7 @@ public class PlayerFlightControls : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
+    {       
         if (isAlive)
         {
             GetLookRotation();
@@ -233,8 +225,7 @@ public class PlayerFlightControls : MonoBehaviour
     }
     public void OnDeviceChange(PlayerInput pi)
     {
-        isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
-    }
+        isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;    }
     public void OnCollisionEnter(Collision collision)
     {
         isAlive = false;
