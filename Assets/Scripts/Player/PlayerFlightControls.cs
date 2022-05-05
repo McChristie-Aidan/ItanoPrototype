@@ -40,13 +40,17 @@ public class PlayerFlightControls : MonoBehaviour
     [SerializeField]
     float deathCameraShakeAmount = 10f, deathCameraShakeLength = 2f;
 
+
     PlayerControls playerControls;
+    PlayerInput playerInput;
+    string currentControlScheme;
 
     Rigidbody rb;
 
     private void Awake()
     {
         //playerControls = new PlayerControls();
+        playerInput = GetComponent<PlayerInput>();
     }
     private void Start()
     {
@@ -55,7 +59,12 @@ public class PlayerFlightControls : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {       
+    {
+        if (playerInput.currentControlScheme != currentControlScheme)
+        {
+            OnDeviceChange(playerInput);
+            currentControlScheme = playerInput.currentControlScheme;
+        }
         if (isAlive)
         {
             GetLookRotation();
