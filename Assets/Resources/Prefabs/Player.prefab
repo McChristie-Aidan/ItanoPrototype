@@ -186,13 +186,14 @@ MonoBehaviour:
   minForwardSpeed: 10
   maxForwardSpeed: 50
   strafeSpeed: 20
-  forwardAcceleration: 14.72
-  pitchSpeed: 17
-  yawSpeed: 13
+  forwardAcceleration: 14
+  forwardDeceleration: 20
+  pitchSpeed: 24
+  yawSpeed: 17
   rollSpeed: 4
   rollAcceleration: 4.84
-  horizontalLookAcceleration: 2
-  verticalLookAccelerarion: 1
+  horizontalLookAcceleration: 8
+  verticalLookAccelerarion: 6
   verticalLookDeadZone: 0
   horizontalLookDeadZone: 0
   isAlive: 1
