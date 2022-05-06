@@ -6,7 +6,13 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     private TextMeshProUGUI points;
-    public TextMeshProUGUI waveCount, warning, waveTimer, missileCount;
+    public TextMeshProUGUI waveCount, warning, waveTimer, missileCount; 
+    
+    [SerializeField]
+    private CanvasGroup pauseMenu;
+    
+    public static bool isPaused;
+
     PlayerFlightControls player;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +33,8 @@ public class UIManager : MonoBehaviour
         Warning();
         //update wave timer
         WaveTimer();
+        //update pause menu
+        PauseMenu();
 
         MissileCount();
     }
@@ -102,6 +110,21 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
+    void PauseMenu()
+    {
+        if (isPaused)
+        {
+            pauseMenu.interactable = true;
+            pauseMenu.alpha = 1;
+        }
+        else if (!isPaused)
+        {
+            pauseMenu.interactable = false;
+            pauseMenu.alpha = 0;
+        }
+    }
+
     void MissileCount()
     {
         if (missileCount != null)
