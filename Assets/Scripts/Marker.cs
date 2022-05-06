@@ -18,7 +18,7 @@ public class Marker : MonoBehaviour
 
     float minX, maxX, minY, maxY;
 
-    private void Start()
+    private void Awake()
     {
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -26,6 +26,10 @@ public class Marker : MonoBehaviour
         tmp = marker.GetComponentInChildren<TextMeshProUGUI>();
 
         img = marker.GetComponent<Image>();
+    }
+    private void Start()
+    {
+        
     }
     private void OnEnable()
     {

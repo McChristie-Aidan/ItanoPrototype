@@ -12,6 +12,7 @@ public class PlayerFlightControls : MonoBehaviour
     private float activeForwardSpeed, activeStrafeSpeed;
     public float ActiveForwardSpeed => activeForwardSpeed;
     public float forwardAcceleration = 7f;
+    public float forwardDeceleration;
 
 
     public float pitchSpeed = 7f, yawSpeed = 10f, rollSpeed = 10f;
@@ -42,21 +43,17 @@ public class PlayerFlightControls : MonoBehaviour
     [SerializeField]
     float deathCameraShakeAmount = 10f, deathCameraShakeLength = 2f;
 
+
     PlayerControls playerControls;
+    PlayerInput playerInput;
+    string currentControlScheme;
 
     Rigidbody rb;
 
     private void Awake()
     {
-        playerControls = new PlayerControls();
-    }
-    private void OnEnable()
-    {
-        playerControls.Enable();
-    }
-    private void OnDisable()
-    {
-        playerControls.Disable();
+        //playerControls = new PlayerControls();
+        playerInput = GetComponent<PlayerInput>();
     }
     private void Start()
     {
@@ -68,6 +65,11 @@ public class PlayerFlightControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerInput.currentControlScheme != currentControlScheme)
+        {
+            OnDeviceChange(playerInput);
+            currentControlScheme = playerInput.currentControlScheme;
+        }
         if (isAlive)
         {
             GetLookRotation();
@@ -127,7 +129,7 @@ public class PlayerFlightControls : MonoBehaviour
                 yDist = pitchSpeed / 2;
             }
 
-            Debug.Log(new Vector2(xDist, yDist).ToString());
+            //Debug.Log(new Vector2(xDist, yDist).ToString());
 
             //activeLookRotation.x += -(yDist * 2); //time.deltatime
             //activeLookRotation.y += (xDist * 2); //time.deltatime
@@ -154,7 +156,21 @@ public class PlayerFlightControls : MonoBehaviour
     }
     void HandleMovement()
     {
-        activeForwardSpeed += (forwardAcceleration * movementInput.y) * Time.deltaTime;
+        bool isDecelerating = false;
+        if (movementInput.y < 0)
+        {
+            isDecelerating = true;
+        }
+
+        if (!isDecelerating)
+        {
+            activeForwardSpeed += (forwardAcceleration * movementInput.y) * Time.deltaTime;
+        }
+        else
+        {
+            activeForwardSpeed += (forwardDeceleration * movementInput.y) * Time.deltaTime;
+        }
+
         activeForwardSpeed = Mathf.Clamp(activeForwardSpeed, minForwardSpeed, maxForwardSpeed);
         /*
          * for strafing movement
@@ -239,8 +255,7 @@ public class PlayerFlightControls : MonoBehaviour
     }
     public void OnDeviceChange(PlayerInput pi)
     {
-        isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;
-    }
+        isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;    }
     public void OnCollisionEnter(Collision collision)
     {
         isAlive = false;
