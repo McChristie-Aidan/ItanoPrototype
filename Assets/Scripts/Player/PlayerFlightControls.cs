@@ -179,15 +179,20 @@ public class PlayerFlightControls : MonoBehaviour
     }
     void HandleRotation()
     {
-        activeRollSpeed = Mathf.Lerp(activeRollSpeed, movementInput.x * rollSpeed, rollAcceleration * Time.deltaTime);
+        if(Time.timeScale != 0)
+        {
+            activeRollSpeed = Mathf.Lerp(activeRollSpeed, movementInput.x * rollSpeed, rollAcceleration * Time.deltaTime);
 
-        activeLookRotation = new Vector3(
-            activeLookRotation.x * pitchSpeed,
-            activeLookRotation.y * yawSpeed,
-            activeLookRotation.z * rollSpeed) * Time.deltaTime;
-        activeLookRotation.z = -activeRollSpeed;
+            activeLookRotation = new Vector3(
+                activeLookRotation.x * pitchSpeed,
+                activeLookRotation.y * yawSpeed,
+                activeLookRotation.z * rollSpeed) * Time.deltaTime;
+            activeLookRotation.z = -activeRollSpeed;
 
-        this.transform.Rotate(activeLookRotation , Space.Self);
+            this.transform.Rotate(activeLookRotation, Space.Self);
+        }
+
+        
 
     }
     void HandleCameraEffects()
