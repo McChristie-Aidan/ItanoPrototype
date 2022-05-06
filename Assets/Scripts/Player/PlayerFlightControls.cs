@@ -30,6 +30,9 @@ public class PlayerFlightControls : MonoBehaviour
     private Vector2 movementInput;
     private float strafeInput;
 
+    [SerializeField]
+    private CanvasGroup pauseMenu;
+
     bool isGamepad;
 
     //death
@@ -56,6 +59,8 @@ public class PlayerFlightControls : MonoBehaviour
     {
         activeForwardSpeed = minForwardSpeed;
         rb = GetComponent<Rigidbody>();
+        pauseMenu.interactable = false;
+        pauseMenu.alpha = 0;
     }
     // Update is called once per frame
     void Update()
@@ -230,6 +235,22 @@ public class PlayerFlightControls : MonoBehaviour
         if (SceneManagement.Instance != null)
         {
             SceneManagement.Instance.LoadCurrentLevel();
+        }
+    }
+    public void OnPause()
+    {
+        AudioListener.pause = !AudioListener.pause;
+        if (Time.timeScale == 1)
+        {
+            pauseMenu.interactable = true;
+            pauseMenu.alpha = 1;
+            Time.timeScale = 0;
+        }
+        else if(Time.timeScale == 0)
+        {
+            pauseMenu.interactable = false;
+            pauseMenu.alpha = 0;
+            Time.timeScale = 1;
         }
     }
     public void OnDeviceChange(PlayerInput pi)
