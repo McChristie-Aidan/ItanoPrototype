@@ -849,7 +849,7 @@ MonoBehaviour:
   warning: {fileID: 3142240425747867437}
   waveTimer: {fileID: 8177203575807152958}
   missileCount: {fileID: 6316590652296057405}
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 3245385615892445781}
 --- !u!1 &1761314539445932954
 GameObject:
   m_ObjectHideFlags: 0
