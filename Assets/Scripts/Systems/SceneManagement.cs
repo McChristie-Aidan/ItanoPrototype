@@ -84,7 +84,7 @@ public class SceneManagement : MonoBehaviour
         LoadCurrentLevel();
     }
 
-    public void OnPause()
+    public static void OnPause()
     {
         AudioListener.pause = !AudioListener.pause;
         if (Time.timeScale == 1)

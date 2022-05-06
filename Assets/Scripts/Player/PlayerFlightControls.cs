@@ -239,17 +239,7 @@ public class PlayerFlightControls : MonoBehaviour
     }
     public void OnPause()
     {
-        AudioListener.pause = !AudioListener.pause;
-        if (Time.timeScale == 1)
-        {
-            UIManager.isPaused = true;
-            Time.timeScale = 0;
-        }
-        else if (Time.timeScale == 0)
-        {
-            UIManager.isPaused = false;
-            Time.timeScale = 1;
-        }
+        SceneManagement.OnPause();
     }
 
     public void OnDeviceChange(PlayerInput pi)
