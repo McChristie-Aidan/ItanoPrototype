@@ -6,7 +6,8 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     private TextMeshProUGUI points;
-    public TextMeshProUGUI waveCount, warning, waveTimer, missileCount; 
+    public TextMeshProUGUI waveCount, warning, waveTimer, missileCount;
+    public AudioSource warningSound;
     
     [SerializeField]
     private CanvasGroup pauseMenu;
@@ -65,6 +66,11 @@ public class UIManager : MonoBehaviour
         {
             if (SpawnManager.Instance.useBiggerCooldown && SpawnManager.Instance.currentWaveNumber > 0)
             {
+                if (!warningSound.isPlaying)
+                {
+                    warningSound.Play();
+                }
+
                 if (warning.color.a < .1)
                 {
                     warning.color = new Color(1, 0, 0, 1);
