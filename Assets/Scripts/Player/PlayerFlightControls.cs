@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerFlightControls : MonoBehaviour
 {
+    //logic stuff
     public float minForwardSpeed = 10f, maxForwardSpeed = 25f, strafeSpeed = 7.5f;
     public float MinForwardSpeed => minForwardSpeed;
     public float MaxForwardSpeed => maxForwardSpeed;
@@ -30,7 +31,11 @@ public class PlayerFlightControls : MonoBehaviour
     private Vector2 movementInput;
     private float strafeInput;
 
+    //for controller use
     bool isGamepad;
+
+    //audio
+    public AudioSource engineNoise;
 
     //death
     [HideInInspector]
@@ -83,6 +88,7 @@ public class PlayerFlightControls : MonoBehaviour
             //rb.velocity = this.transform.forward * activeForwardSpeed + this.transform.right * activeStrafeSpeed;
         }
 
+        PitchEngineNoise();
     }
     private void LateUpdate()
     {
@@ -199,6 +205,18 @@ public class PlayerFlightControls : MonoBehaviour
         float targetFOV = activeForwardSpeed + 50;
         //float targetFOV = Mathf.Lerp(minForwardSpeed, maxForwardSpeed, Mathf.InverseLerp(60, 90, activeForwardSpeed));
         CameraEffects.Instance.SetCamFOV(targetFOV);
+    }
+    void PitchEngineNoise()
+    {
+        if (isAlive)
+        {
+            engineNoise.pitch = Utility.Map(activeForwardSpeed, minForwardSpeed, .5f, maxForwardSpeed, 1.5f);
+        }
+        else
+        {
+            engineNoise.pitch -= Time.deltaTime * .05f;
+            engineNoise.volume -= Time.deltaTime * .05f;
+        }
     }
     public void OnMove(InputAction.CallbackContext callbackContext)
     {

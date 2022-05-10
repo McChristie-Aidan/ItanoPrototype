@@ -66,11 +66,13 @@ public class UIManager : MonoBehaviour
         {
             if (SpawnManager.Instance.useBiggerCooldown && SpawnManager.Instance.currentWaveNumber > 0)
             {
+                //play sound effect
                 if (!warningSound.isPlaying)
                 {
                     warningSound.Play();
                 }
 
+                //change color
                 if (warning.color.a < .1)
                 {
                     warning.color = new Color(1, 0, 0, 1);
@@ -87,6 +89,13 @@ public class UIManager : MonoBehaviour
             }
             else       
             {
+                //turn off sound effect
+                if (warningSound.isPlaying)
+                {
+                    warningSound.Stop();
+                }
+
+                //reset color to invisible
                 if (warning.color.a > 0)
                 {
                     //reduces any remaining alpha to 0

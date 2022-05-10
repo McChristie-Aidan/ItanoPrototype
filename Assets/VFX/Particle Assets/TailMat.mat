@@ -274,7 +274,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - Color01: {r: 0, g: 11.984314, b: 10.039216, a: 0}
+    - Color01: {r: 0, g: 2.9960785, b: 2.509804, a: 0}
     - Color02: {r: 0.1585011, g: 0, b: 1, a: 0}
     - DissolveSpeed: {r: -0.5, g: 0, b: 0, a: 0}
     - MainTexSpeed: {r: -0.1, g: 0, b: 0, a: 0}
