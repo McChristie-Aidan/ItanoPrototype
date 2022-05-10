@@ -247,6 +247,7 @@ public class PlayerFlightControls : MonoBehaviour
         isGamepad = pi.currentControlScheme.Equals("Gamepad") ? true : false;    }
     public void OnCollisionEnter(Collision collision)
     {
+        string name = collision.transform.name;
         isAlive = false;
         //shake cam
         CameraEffects.Instance.ShakeCam(deathCameraShakeAmount, deathCameraShakeLength);       
