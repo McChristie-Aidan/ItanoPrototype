@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Waypoint : Objective
 {
     public AudioSource ringSound;
-
+    public GameObject particle;
     protected override void Start()
     {
         base.Start();
@@ -19,6 +20,12 @@ public class Waypoint : Objective
             if (ringSound != null)
             {
                 ringSound.Play();
+            }
+
+            //play particles
+            if (UIParticleHandler.Instance != null)
+            {
+                UIParticleHandler.Instance.PlayParticle(particle.name);
             }
 
             //do waypoint things
