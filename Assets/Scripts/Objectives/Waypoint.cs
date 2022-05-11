@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Waypoint : Objective
 {
+    public AudioSource ringSound;
+
     protected override void Start()
     {
         base.Start();
@@ -13,6 +15,12 @@ public class Waypoint : Objective
     {
         if (other.tag == "Player")
         {
+            //play Sound
+            if (ringSound != null)
+            {
+                ringSound.Play();
+            }
+
             //do waypoint things
             GameManagment.AddPoints(this.PointValue);
             this.Deactivate(); 

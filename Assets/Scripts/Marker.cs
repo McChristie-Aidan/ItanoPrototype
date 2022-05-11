@@ -27,10 +27,6 @@ public class Marker : MonoBehaviour
 
         img = marker.GetComponent<Image>();
     }
-    private void Start()
-    {
-        
-    }
     private void OnEnable()
     {
         marker.gameObject.SetActive(true);
