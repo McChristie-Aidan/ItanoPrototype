@@ -465,6 +465,7 @@ MonoBehaviour:
   verticalLookAccelerarion: 6
   verticalLookDeadZone: 0
   horizontalLookDeadZone: 0
+  engineNoise: {fileID: 0}
   isAlive: 1
   explosionPrefab: {fileID: 5286639445833195791, guid: 34e95327320af7043a71cab4be3f39db, type: 3}
   deathCameraShakeAmount: 10
@@ -1305,7 +1306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400130136312230384, guid: b30f90945c9d96849b624ff2158bf482, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
-      value: 0.23996255
+      value: 0.118014246
       objectReference: {fileID: 0}
     - target: {fileID: 400130136312230384, guid: b30f90945c9d96849b624ff2158bf482, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].time
@@ -1317,7 +1318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400130136312230384, guid: b30f90945c9d96849b624ff2158bf482, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
-      value: 1
+      value: 0.98058254
       objectReference: {fileID: 0}
     - target: {fileID: 400130136312230384, guid: b30f90945c9d96849b624ff2158bf482, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].inSlope

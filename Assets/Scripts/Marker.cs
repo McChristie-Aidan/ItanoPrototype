@@ -26,6 +26,7 @@ public class Marker : MonoBehaviour
         tmp = marker.GetComponentInChildren<TextMeshProUGUI>();
 
         img = marker.GetComponent<Image>();
+        
     }
     private void OnEnable()
     {
@@ -33,7 +34,7 @@ public class Marker : MonoBehaviour
     }
     private void OnDisable()
     {
-        marker.gameObject.SetActive(false);
+        //marker.gameObject.SetActive(false);
     }
     void Update()
     {
