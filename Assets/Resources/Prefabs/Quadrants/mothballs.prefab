@@ -16270,6 +16270,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2399374027351377281, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3572166223887333478, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -16369,6 +16373,10 @@ PrefabInstance:
       value: Ring Waypoint 1
       objectReference: {fileID: 0}
     - target: {fileID: 1555248644552121725, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399374027351377281, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
@@ -16475,6 +16483,10 @@ PrefabInstance:
       value: Ring Waypoint 1 (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1555248644552121725, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399374027351377281, guid: 9457fc15a31a5cc44a27d22f29d167b7, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
