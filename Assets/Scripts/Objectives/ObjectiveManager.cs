@@ -57,6 +57,7 @@ public class ObjectiveManager : MonoBehaviour
             if (!objectives[i].isActiveAndEnabled)
             {
                 objectives[i].Activate();
+
                 activeObjectives.Add(objectives[i]);
             }
         }

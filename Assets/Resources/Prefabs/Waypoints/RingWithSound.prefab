@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 0.1287542, y: 0.1287542, z: 0.12843104}
   m_Children: []
   m_Father: {fileID: 2902974450922819427}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6234480900904940424
 AudioSource:
@@ -156,14 +156,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3449688644670667289}
   m_LocalRotation: {x: -0.7071065, y: -0, z: -0, w: 0.7071071}
-  m_LocalPosition: {x: 8.297472, y: 74.46897, z: -206.51675}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 25, y: 1, z: 25}
   m_Children:
   - {fileID: 144459293254617508}
   - {fileID: 5246861873786791845}
   - {fileID: 541392170420397622}
   m_Father: {fileID: 2902974450922819427}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &3449688644670667301
 MeshFilter:
@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 100
   ringSound: {fileID: 0}
+  particle: {fileID: 0}
 --- !u!64 &7770934954820665805
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2157,8 +2158,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3449688644670667302}
   - {fileID: 5695427359323199124}
+  - {fileID: 3449688644670667302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

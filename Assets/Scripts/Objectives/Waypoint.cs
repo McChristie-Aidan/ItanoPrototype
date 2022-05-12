@@ -34,7 +34,6 @@ public class Waypoint : Objective
         }
     }
     
-    
 
     public override void Activate()
     {

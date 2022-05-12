@@ -34,7 +34,11 @@ public class Marker : MonoBehaviour
     }
     private void OnDisable()
     {
-        //marker.gameObject.SetActive(false);
+        if (marker == null)
+        {
+            Destroy(this);
+        }
+        marker.gameObject.SetActive(false);
     }
     void Update()
     {
