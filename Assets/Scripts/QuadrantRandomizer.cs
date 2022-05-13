@@ -18,7 +18,7 @@ public class QuadrantRandomizer : MonoBehaviour
             QuadrantList.Add(quadrant); 
         }
 
-        Debug.Log(QuadrantList.Count);
+        //Debug.Log(QuadrantList.Count);
 
         //randomly generate the position of the quadrant
         GetComponent<MeshRenderer>().enabled = false;
@@ -26,6 +26,6 @@ public class QuadrantRandomizer : MonoBehaviour
         float randomRot = Random.Range(0, 3) * 90;
         GameObject go = Instantiate(QuadrantList[Random.Range(0, QuadrantList.Count)], this.transform, false);
         go.transform.Rotate(0, randomRot, 0);
-        Debug.Log("Generated");
+        //Debug.Log("Generated");
     }
 }

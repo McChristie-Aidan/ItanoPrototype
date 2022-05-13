@@ -6,7 +6,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     private TextMeshProUGUI points;
-    public TextMeshProUGUI waveCount, warning, waveTimer, missileCount;
+    public TextMeshProUGUI waveCount, warning, waveTimer, missileCount, bigPoints;
     public AudioSource warningSound;
     
     [SerializeField]
@@ -21,11 +21,14 @@ public class UIManager : MonoBehaviour
         points = GameObject.FindGameObjectWithTag("Points").GetComponent<TextMeshProUGUI>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFlightControls>();
         warning.color = new Color(1, 1, 1, 0);
+        //pauseMenu.alpha = 0;
+        //Debug.Log("UI manager start");
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("UI manager update");
         //update points
         Points();
         //Update wave count
@@ -41,10 +44,18 @@ public class UIManager : MonoBehaviour
     }
     void Points()
     {
-        if (points != null)
-        {
-            points.text = $"Points: {GameManagment.Instance.pointTotal}";
-        }
+        //if (player.isAlive)
+        //{
+            if (points != null)
+            {
+                points.text = $"Points: {GameManagment.Instance.pointTotal}";
+                //bigPoints.text = "this code is running";
+            }
+        //}
+        //else
+        //{
+        //    bigPoints.text = $"Points: {GameManagment.Instance.pointTotal}";
+        //}
     }
     void WaveCount()
     {
@@ -112,8 +123,8 @@ public class UIManager : MonoBehaviour
     {
         if (waveTimer != null)
         {
-            if (player.isAlive)
-            {
+            //if (player.isAlive)
+            //{
                 if (SpawnManager.Instance.useBiggerCooldown)
                 {
                     waveTimer.text = $"Next Wave In: {(SpawnManager.Instance.waveTimeStamp - Time.time).ToString("0.00")}";
@@ -122,7 +133,7 @@ public class UIManager : MonoBehaviour
                 {
                     waveTimer.text = $"Spawning Current Wave: {(SpawnManager.Instance.waveTimeStamp - Time.time).ToString("0.00")}";
                 }
-            }
+            //}
         }
     }
 

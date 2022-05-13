@@ -101,8 +101,8 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Grid_Color: {r: 11.984314, g: 0, b: 0, a: 0}
-    - Tiling: {r: 256, g: 256, b: 0, a: 0}
+    - Grid_Color: {r: 2.9960785, g: 0, b: 0, a: 0}
+    - Tiling: {r: 50, g: 50, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
