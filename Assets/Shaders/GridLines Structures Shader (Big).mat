@@ -88,7 +88,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Grid_Color: {r: 0, g: 87.34118, b: 95.87451, a: 0}
+    - Grid_Color: {r: 0, g: 43.67059, b: 47.937256, a: 0}
     - Tiling: {r: 300, g: 300, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
