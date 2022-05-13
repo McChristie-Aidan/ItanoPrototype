@@ -30,6 +30,7 @@ public class SceneManagement : MonoBehaviour
         sceneName = SceneManager.GetActiveScene().name;
         FindLoadScreenItems();
         UIManager.isPaused = false;
+        AudioListener.pause = false;
         Time.timeScale = 1;
     }
 
