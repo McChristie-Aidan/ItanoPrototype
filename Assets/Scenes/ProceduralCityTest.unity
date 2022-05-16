@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1210.5239, g: 496.78528, b: 513.7888, a: 1}
+  m_IndirectSpecularColor: {r: 1208.4982, g: 495.90967, b: 512.8548, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -411,49 +411,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6221fabfafbfb1e41a1217e8928a9d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!84 &187610050
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 3
-  m_Width: 1118
-  m_Height: 629
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 2
-  m_ColorFormat: 48
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!43 &188549962
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh100124
+  m_Name: pb_Mesh168340
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -622,7 +586,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh739274
+  m_Name: pb_Mesh168658
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1088,13 +1052,95 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 073e4b155b854fd45841f0986614fe79, type: 3}
+--- !u!21 &542350883
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs/DefaultCompositionGraph
+  m_Shader: {fileID: -6465566751694194690, guid: 4963fc7266854f14f9fd6d585a3bc290, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - BaseLayer:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AddPrecomputedVelocity: 0
+    - _AlphaCutoffEnable: 0
+    - _AlphaDstBlend: 0
+    - _AlphaSrcBlend: 1
+    - _AlphaToMask: 0
+    - _AlphaToMaskInspectorValue: 0
+    - _BlendMode: 0
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _DepthOffsetEnable: 0
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 0
+    - _EnableBlendModePreserveSpecularLighting: 0
+    - _EnableFogOnTransparent: 1
+    - _OpaqueCullMode: 2
+    - _RenderQueueType: 1
+    - _SrcBlend: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 0
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 14
+    - _StencilWriteMaskMV: 40
+    - _SurfaceType: 0
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentDepthPostpassEnable: 0
+    - _TransparentDepthPrepassEnable: 0
+    - _TransparentSortPriority: 0
+    - _TransparentWritingMotionVec: 0
+    - _TransparentZWrite: 0
+    - _UseShadowThreshold: 0
+    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestGBuffer: 4
+    - _ZTestTransparent: 4
+    - _ZWrite: 1
+    m_Colors:
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!43 &572268126
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh738926
+  m_Name: pb_Mesh168612
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1475,7 +1521,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh735280
+  m_Name: pb_Mesh168418
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1917,7 +1963,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh735666
+  m_Name: pb_Mesh168452
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2912,8 +2958,12 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1622095774916081695, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1622095774916081695, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.49
+      value: 1.246
       objectReference: {fileID: 0}
     - target: {fileID: 2586289788286013838, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_Intensity
@@ -2941,7 +2991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5119335499423153050, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_Range
-      value: 15
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 5119335499423153050, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_Color.b
@@ -2957,15 +3007,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5119335499423153050, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_Intensity
-      value: 134217730
+      value: 4194304
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119335499423153050, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
+      propertyPath: m_AreaSize.x
+      value: 4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119335499423153050, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
+      propertyPath: m_AreaSize.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5119335499423153050, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_ShadowRadius
       value: 25.7
       objectReference: {fileID: 0}
+    - target: {fileID: 5119335499423153050, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357956463458524959, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
+      propertyPath: m_Name
+      value: Distance Indicator Area Light
+      objectReference: {fileID: 0}
     - target: {fileID: 5357956463458524959, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6278577345614259454, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: deathSound
@@ -3021,11 +3087,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7572530040740463310, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_Intensity
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7572530040740463310, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_LightUnit
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572530040740463310, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
+      propertyPath: m_ShapeWidth
+      value: 4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572530040740463310, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
+      propertyPath: m_ShapeHeight
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7572530040740463310, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_ShapeRadius
@@ -3033,7 +3107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8000195967692111174, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8254297
+      value: 0.8254296
       objectReference: {fileID: 0}
     - target: {fileID: 8000195967692111174, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3045,7 +3119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8000195967692111175, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7774245
+      value: 1.7777778
       objectReference: {fileID: 0}
     - target: {fileID: 8000195968461432273, guid: 12ebad6a116be404993caf6738ddc33a, type: 3}
       propertyPath: m_AmplitudeGain
@@ -3100,7 +3174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e46d2393531446428690b5a5f21645d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1880142862}
+  m_Material: {fileID: 542350883}
   m_OutputDisplay: 0
   m_InputLayers:
   - m_LayerName: BaseLayer
@@ -3131,7 +3205,7 @@ MonoBehaviour:
     m_InputFilters: []
     m_AOVBitmask: 0
     m_AOVRenderTargets: []
-    m_RenderTarget: {fileID: 187610050}
+    m_RenderTarget: {fileID: 1481633980}
     m_ClearsBackGround: 0
     m_Show: 1
     m_LayerCamera: {fileID: 0}
@@ -3228,7 +3302,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh735100
+  m_Name: pb_Mesh168396
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4204,7 +4278,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh739166
+  m_Name: pb_Mesh168628
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4458,7 +4532,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967263
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 187610050}
+  m_TargetTexture: {fileID: 1481633980}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -4956,6 +5030,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8700429582157004214, guid: 073e4b155b854fd45841f0986614fe79, type: 3}
   m_PrefabInstance: {fileID: 878748087}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &1481633980
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 3
+  m_Width: 2560
+  m_Height: 1440
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthFormat: 2
+  m_ColorFormat: 48
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &1511181535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5078,7 +5188,7 @@ PrefabInstance:
     - target: {fileID: 2825907227456067700, guid: cecb1c7bcbe75f84795bd059fe6b4c7e, type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 187610050}
+      objectReference: {fileID: 1481633980}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cecb1c7bcbe75f84795bd059fe6b4c7e, type: 3}
 --- !u!1001 &1534066119
@@ -5249,7 +5359,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh737358
+  m_Name: pb_Mesh168566
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5634,88 +5744,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 073e4b155b854fd45841f0986614fe79, type: 3}
---- !u!21 &1880142862
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs/DefaultCompositionGraph
-  m_Shader: {fileID: -6465566751694194690, guid: 4963fc7266854f14f9fd6d585a3bc290, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - BaseLayer:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _AddPrecomputedVelocity: 0
-    - _AlphaCutoffEnable: 0
-    - _AlphaDstBlend: 0
-    - _AlphaSrcBlend: 1
-    - _AlphaToMask: 0
-    - _AlphaToMaskInspectorValue: 0
-    - _BlendMode: 0
-    - _CullMode: 2
-    - _CullModeForward: 2
-    - _DepthOffsetEnable: 0
-    - _DoubleSidedEnable: 0
-    - _DoubleSidedNormalMode: 2
-    - _DstBlend: 0
-    - _EnableBlendModePreserveSpecularLighting: 0
-    - _EnableFogOnTransparent: 1
-    - _OpaqueCullMode: 2
-    - _RenderQueueType: 1
-    - _SrcBlend: 1
-    - _StencilRef: 0
-    - _StencilRefDepth: 0
-    - _StencilRefDistortionVec: 4
-    - _StencilRefGBuffer: 2
-    - _StencilRefMV: 32
-    - _StencilWriteMask: 6
-    - _StencilWriteMaskDepth: 8
-    - _StencilWriteMaskDistortionVec: 4
-    - _StencilWriteMaskGBuffer: 14
-    - _StencilWriteMaskMV: 40
-    - _SurfaceType: 0
-    - _TransparentBackfaceEnable: 0
-    - _TransparentCullMode: 2
-    - _TransparentDepthPostpassEnable: 0
-    - _TransparentDepthPrepassEnable: 0
-    - _TransparentSortPriority: 0
-    - _TransparentWritingMotionVec: 0
-    - _TransparentZWrite: 0
-    - _UseShadowThreshold: 0
-    - _ZTestDepthEqualForOpaque: 4
-    - _ZTestGBuffer: 4
-    - _ZTestTransparent: 4
-    - _ZWrite: 1
-    m_Colors:
-    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &1882262739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5779,7 +5807,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh736702
+  m_Name: pb_Mesh168520
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
